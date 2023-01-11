@@ -3,7 +3,10 @@ project (hpc_assignment)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(hpc_assignment main.cpp src/Person.cpp src/Person.h)
+add_executable(hpc_assignment main.cpp src/Map.cpp src/Map.h)
+add_custom_command(TARGET hpc_assignment POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_SOURCE_DIR}/src/data $<TARGET_FILE_DIR:hpc_assignment>/src/data)
 
 # REQUIRED ADDONS:
 find_package(MPI REQUIRED)

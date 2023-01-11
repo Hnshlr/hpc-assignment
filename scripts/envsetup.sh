@@ -1,2 +1,2 @@
 # Download public git repo:
-ssh s388885@crescent.central.cranfield.ac.uk "cd /scratch/s388885/; ssh -T git@github.com; git clone git@github.com:Hnshlr/hpc-assignment.git"
+ssh s388885@crescent.central.cranfield.ac.uk "cd /scratch/s388885/; ssh -T git@github.com; cd /scratch/s388885/; rm -rf hpc-assignment; git clone git@github.com:Hnshlr/hpc-assignment.git"

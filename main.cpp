@@ -1,7 +1,7 @@
 #include <iostream>
 #include <mpi.h>
 
-#include "src/Person.h"
+#include "src/Map.h"
 
 int main(int argc, char *argv[]) {
     // Initialize the MPI environment
@@ -12,10 +12,16 @@ int main(int argc, char *argv[]) {
     MPI_Comm_size(MPI_COMM_WORLD, &npes);
     MPI_Comm_rank(MPI_COMM_WORLD, &myrank);
 
-    // Make each process say 'Hello world!':
-    Person person;
-    person.say("Hello, I'm a Person person, and I belong to process " + to_string(myrank) + " of " + to_string(npes) + " processes.");
-
+    // RANK O - PRE-PROCESSING:
+    if (myrank==0) {
+        // Create a map:
+        const string filename = "src/data/distances/dist19.txt";
+        Map map = *new Map(filename);
+        cout << "Process " << myrank << " created the map." << endl;
+    }
+    else {
+        cout << "Process " << myrank << " is idle." << endl;
+    }
 
     // Finalize MPI:
     MPI_Finalize();
