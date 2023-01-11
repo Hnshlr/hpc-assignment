@@ -3,6 +3,8 @@
 
 #include "src/Map.h"
 
+using namespace std;
+
 int main(int argc, char *argv[]) {
     // Initialize the MPI environment
     MPI_Init(&argc, &argv);
@@ -17,10 +19,10 @@ int main(int argc, char *argv[]) {
         // Create a map:
         const string filename = "src/data/distances/dist19.txt";
         Map map = *new Map(filename);
-        cout << "Process " << myrank << " created the map." << endl;
+        printf("Process %d created the map.\n", myrank);
     }
     else {
-        cout << "Process " << myrank << " is idle." << endl;
+        printf("Process %d is idle.\n", myrank);
     }
 
     // Finalize MPI:

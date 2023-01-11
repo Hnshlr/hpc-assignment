@@ -6,7 +6,6 @@ Map::Map(const string &filename) {
     // Check if the file is open:
     if (!file.is_open()) {
         cout << "Could not open file: " << filename << ".\n";
-        cout << ::strerror(errno) << endl;
         exit(1);
     }
     // Read the file line by line:

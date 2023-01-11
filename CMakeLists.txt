@@ -9,9 +9,6 @@ add_custom_command(TARGET hpc_assignment POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory
         ${CMAKE_SOURCE_DIR}/src/data $<TARGET_FILE_DIR:hpc_assignment>/src/data)
 
-add_custom_command(TARGET hpc_assignment POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:hpc_assignment> ${CMAKE_SOURCE_DIR})
-
 # REQUIRED ADDONS:
 find_package(MPI REQUIRED)
 include_directories(SYSTEM ${MPI_INCLUDE_PATH})
