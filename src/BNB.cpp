@@ -4,52 +4,125 @@
 BNB::BNB() {}
 BNB::BNB(const Graph &graph) {
     this->graph = graph;
-    this->nodes = vector<int>(graph.getDistances().size(), 0);
-    for (int i = 0; i < this->nodes.size(); i++) {this->nodes[i] = i;}
-    this->bestRoute = vector<int>(this->nodes);
+    this->bestRoute = std::vector<int>(graph.getNodes().size(), 0);
+    for (int i = 0; i < this->bestRoute.size(); i++) {this->bestRoute[i] = i;}
 }
 BNB::~BNB() {}
 
 // GETTERS:
+void BNB::setBestRoute(const std::vector<int> &route) {
+    BNB::bestRoute = route;
+}
 const Graph &BNB::getGraph() const {
     return graph;
 }
-const vector<int> &BNB::getNodes() const {
-    return nodes;
-}
-const vector<int> &BNB::getBestRoute() const {
+const std::vector<int> &BNB::getBestRoute() const {
     return bestRoute;
 }
 
 // METHODS:
-vector<int> BNB::findShortestRoute() {
+std::vector<int> BNB::findShortestRoute() {
     return {};
 }
-bool BNB::isRouteBetter(vector<int> route) {
+bool BNB::isRouteBetter(std::vector<int> route) {
     return this->graph.getTravelCost(route) < this->graph.getTravelCost(this->bestRoute);
 }
 
-
-void BNB::search(vector<int> path) {
+// ADV. METHODS:
+std::vector<std::vector<std::vector<int>>> BNB::getFirstPaths(int npes) const {
+    // If there are more nodes than processes, we need to give each process more than one path:
+    if (npes < int(getGraph().getNodes().size())) {
+        int nodesPerProcess = int((getGraph().getNodes().size()) / npes) + 1;
+        std::vector<std::vector<std::vector<int>>> paths(npes, std::vector<std::vector<int>>(nodesPerProcess, std::vector<int>(1, 0)));
+        for (int i = 0; i < getGraph().getNodes().size(); i++) {
+            paths[i % npes][i / npes][0] = i;
+        }
+        // Remove the empty paths:
+        for (auto & path : paths) {
+            if (path[path.size()-1][0] == 0) {
+                path.pop_back();
+            }
+        }
+        return paths;
+    }
+    // However, if there are less nodes than processes, we need go deeper and give each process more than one path:
+    else {
+        int pathsAmount = (int) getGraph().getDistances().size();
+        int depth = 1;
+        while (pathsAmount < npes) {
+            pathsAmount *= pathsAmount;
+            depth+=1;
+        }
+        std::vector<std::vector<int>> paths = std::vector<std::vector<int>>(pathsAmount, std::vector<int>(depth, 0));
+        for (int i = 0; i < getGraph().getDistances().size(); i++) {
+            for (int j = 0; j < getGraph().getDistances().size(); j++) {
+                paths[i*getGraph().getDistances().size()+j][0] = i;
+                paths[i*getGraph().getDistances().size()+j][1] = j;
+            }
+        }
+        std::vector<std::vector<std::vector<int>>> pathsPerProcess = std::vector<std::vector<std::vector<int>>>(npes, std::vector<std::vector<int>>((pathsAmount/npes)+1, std::vector<int>(depth, 0)));
+        // Split paths into pathsPerProcess, so that each process has approximately the same amount of paths to search.
+        for (int i = 0; i < paths.size(); i++) {
+            pathsPerProcess[i%npes][i/npes] = paths[i];
+        }
+        // Remove the empty paths from the end of each process' pathsPerProcess.
+        for (auto & pathsPerProces : pathsPerProcess) {
+            if (pathsPerProces[pathsPerProces.size()-1][0] == 0) {pathsPerProces.pop_back();}
+        }
+        return pathsPerProcess;
+    }
+}
+void BNB::search(std::vector<int> path) {
     if(path.empty()) {
-        for (int node : this->nodes) {
-            vector<int> newPath = path;
+        for (int node : getGraph().getNodes()) {
+            std::vector<int> newPath = path;
             newPath.push_back(node);
             this->search(newPath);
         }
     }
-    else if(path.size() == this->graph.getDistances().size()) {
+    else if(path.size() == getGraph().getDistances().size()) {
         if (this->isRouteBetter(path)) {
             this->bestRoute = path;
         }
     }
     else {
         if (this->isRouteBetter(path)) {
-            for (int node : this->nodes) {
+            for (int node : getGraph().getNodes()) {
                 if (find(path.begin(), path.end(), node) == path.end()) {
-                    vector<int> newPath = path;
+                    std::vector<int> newPath = path;
                     newPath.push_back(node);
                     this->search(newPath);
+                }
+            }
+        }
+        else {
+            return;
+        }
+    }
+}
+// TODO: Implement the search method using MPI.
+void BNB::searchAndUpdate(std::vector<int> path) {
+    // ... TODO: Request the best route from the master process.
+    if(path.empty()) {
+        for (int node : getGraph().getNodes()) {
+            std::vector<int> newPath = path;
+            newPath.push_back(node);
+            this->searchAndUpdate(newPath);
+        }
+    }
+    else if(path.size() == getGraph().getDistances().size()) {
+        if (this->isRouteBetter(path)) {
+            this->bestRoute = path;
+            // TODO: Send the best route to the master process.
+        }
+    }
+    else {
+        if (this->isRouteBetter(path)) {
+            for (int node : getGraph().getNodes()) {
+                if (find(path.begin(), path.end(), node) == path.end()) {
+                    std::vector<int> newPath = path;
+                    newPath.push_back(node);
+                    this->searchAndUpdate(newPath);
                 }
             }
         }
@@ -61,13 +134,12 @@ void BNB::search(vector<int> path) {
 
 // OTHERS:
 void BNB::bestRouteToString() {
-    cout << "Best route: ";
+    std::cout << "Best route: ";
     for (int i : this->bestRoute) {
-        cout << i << " ";
+        std::cout << i << " ";
     }
-    cout << endl;
+    std::cout << std::endl;
 }
 void BNB::bestCostToString() {
-    cout << "Best cost: " << this->graph.getTravelCost(this->bestRoute) << endl;
+    std::cout << "Best cost: " << this->graph.getTravelCost(this->bestRoute) << std::endl;
 }
-
