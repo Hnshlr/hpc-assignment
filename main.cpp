@@ -1,5 +1,6 @@
 #include <iostream>
 #include <mpi.h>
+#include <random>
 
 #include "src/Graph.h"
 #include "src/BNB.h"
@@ -84,24 +85,40 @@
 //    MPI_Finalize();
 //}
 
+#define ncities 13
+
 int main(int argc, char *argv[]) {
 
-    // TIMER START:
-    double start = MPI_Wtime();
-    std::string distFilename = "src/data/distances/dist11.txt";
+    // SETTINGS:
+    std::string distFilename = "src/data/distances/dist13.txt";
 
     // MAIN:
     Graph graph = *new Graph(distFilename);
     graph.toString();
-    BNB bnb = *new BNB(Graph(distFilename));
+    BNB bnb = *new BNB(graph);
 
-    // COMPUTE THE SEARCH ON EACH PROCESS:
-    int *initialRoute = new int[graph.getNcities()];
-//    std::vector<int> initialPath = {};
-//    bnb.search(initialPath);
-//    bnb.bestRouteToString();
-//    bnb.bestCostToString();
+    std::vector<std::vector<std::vector<int>>> pathsVectors = bnb.getFirstPaths(32);
+
+    int path[ncities];
+    int pathSize;
+    int cost;
+    int visited[ncities] = {0};
+
+    // PREFERENCES:
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis(0, ncities - 1);
+    pathSize = 1;
+    path[0] = dis(gen);
+    visited[path[0]] = 1;
+
+    // TIMER START:
+    double start = MPI_Wtime();
+
+    bnb.search(path, pathSize, cost, visited);
+    bnb.bestRouteToString();
+    bnb.bestCostToString();
 
     // INDIVIDUAL TIMER END:
-//    std::cout << "Computation took: " << (int) ((MPI_Wtime() - start) * 100) / 100.0 << " seconds.\n" << std::endl;
+    std::cout << "Computation took: " << (int) ((MPI_Wtime() - start) * 10000) / 10000.0 << " seconds.\n" << std::endl;
 }

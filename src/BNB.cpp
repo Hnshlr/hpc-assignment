@@ -31,10 +31,10 @@ bool BNB::isRouteBetter(int *route) {
 // ADV. METHODS:
 std::vector<std::vector<std::vector<int>>> BNB::getFirstPaths(int npes) const {
     // If there are more nodes than processes, we need to give each process more than one path:
-    if (npes < int(getGraph().getNodes().size())) {
-        int pathsPerProcess = int((getGraph().getNodes().size()) / npes) + 1;
+    if (npes < ncities) {
+        int pathsPerProcess = int((ncities - 1) / npes);
         std::vector<std::vector<std::vector<int>>> paths(npes, std::vector<std::vector<int>>(pathsPerProcess, std::vector<int>(1, 0)));
-        for (int i = 0; i < getGraph().getNodes().size(); i++) {
+        for (int i = 0; i < ncities; i++) {
             paths[i % npes][i / npes][0] = i;
         }
         // Remove the empty paths:
@@ -47,17 +47,17 @@ std::vector<std::vector<std::vector<int>>> BNB::getFirstPaths(int npes) const {
     }
     // However, if there are less nodes than processes, we need go deeper and give each process more than one path:
     else {
-        int pathsAmount = (int) getGraph().getDistances().size();
+        int pathsAmount = ncities;
         int depth = 1;
         while (pathsAmount < npes) {
             pathsAmount *= pathsAmount;
             depth+=1;
         }
         std::vector<std::vector<int>> paths = std::vector<std::vector<int>>(pathsAmount, std::vector<int>(depth, 0));
-        for (int i = 0; i < getGraph().getDistances().size(); i++) {
-            for (int j = 0; j < getGraph().getDistances().size(); j++) {
-                paths[i*getGraph().getDistances().size()+j][0] = i;
-                paths[i*getGraph().getDistances().size()+j][1] = j;
+        for (int i = 0; i < ncities; i++) {
+            for (int j = 0; j < ncities; j++) {
+                paths[i * ncities + j][0] = i;
+                paths[i * ncities + j][1] = j;
             }
         }
         std::vector<std::vector<std::vector<int>>> pathsPerProcess = std::vector<std::vector<std::vector<int>>>(npes, std::vector<std::vector<int>>((pathsAmount/npes)+1, std::vector<int>(depth, 0)));
@@ -73,37 +73,75 @@ std::vector<std::vector<std::vector<int>>> BNB::getFirstPaths(int npes) const {
     }
 }
 
-int*** BNB::getFirstPaths(int npes) const {
+//void BNB::search(std::vector<int> path) {
+//    if(path.empty()) {
+//        for (int node : getGraph().getNodes()) {
+//            std::vector<int> newPath = path;
+//            newPath.push_back(node);
+//            this->search(newPath);
+//        }
+//    }
+//    else if(path.size() == ncities) {
+//        if (this->isRouteBetter(path)) {
+//            this->bestRoute = path;
+//        }
+//    }
+//    else {
+//        if (this->isRouteBetter(path)) {
+//            for (int node : getGraph().getNodes()) {
+//                if (find(path.begin(), path.end(), node) == path.end()) {
+//                    std::vector<int> newPath = path;
+//                    newPath.push_back(node);
+//                    this->search(newPath);
+//                }
+//            }
+//        }
+//        else {
+//            return;
+//        }
+//    }
+//}
 
-}
-
-void BNB::search(std::vector<int> path) {
-    if(path.empty()) {
-        for (int node : getGraph().getNodes()) {
-            std::vector<int> newPath = path;
-            newPath.push_back(node);
-            this->search(newPath);
+void BNB::search(int *path, int pathSize, int cost, int *visited) {
+    // Base case: all cities have been visited
+    if (pathSize == ncities) {
+        if (cost < bestRouteCost) {
+            bestRouteCost = cost;
+            for (int i = 0; i < ncities; i++) {
+                bestRoute[i] = path[i];
+            }
         }
+        return;
     }
-    else if(path.size() == ncities) {
-        if (this->isRouteBetter(path)) {
-            this->bestRoute = path;
+
+    // Try all unvisited cities as the next step in the path
+    if (pathSize == 0) {
+        for (int i = 0; i < ncities; i++) {
+            visited[i] = 1;
+            path[pathSize] = i;
+            search(path, pathSize + 1, cost, visited);
+            visited[i] = 0;
         }
     }
     else {
-        if (this->isRouteBetter(path)) {
-            for (int node : getGraph().getNodes()) {
-                if (find(path.begin(), path.end(), node) == path.end()) {
-                    std::vector<int> newPath = path;
-                    newPath.push_back(node);
-                    this->search(newPath);
-                }
+        for (int i = 0; i < ncities; i++) {
+            if (visited[i] == 0) {
+                visited[i] = 1;
+                path[pathSize] = i;
+                search(path, pathSize + 1, cost + graph.getDistance(path[pathSize - 1], i), visited);
+                visited[i] = 0;
             }
         }
-        else {
-            return;
-        }
     }
+//    for (int i = 0; i < ncities; i++) {
+//        if (!visited[i]) {
+//            visited[i] = 1;
+//            int newCost = cost + graph.getDistance(path[pathSize - 1], i);
+//            path[pathSize] = graph.getNodes()[i];
+//            search(path, pathSize + 1, newCost, visited);
+//            visited[i] = 0;
+//        }
+//    }
 }
 
 // OTHERS:
