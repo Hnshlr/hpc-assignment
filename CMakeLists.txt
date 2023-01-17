@@ -3,7 +3,7 @@ project(hpc_assignment)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(hpc_assignment main.cpp src/Graph.cpp src/Graph.h src/BNB.cpp src/BNB.h src/BNB.h)
+add_executable(hpc_assignment main.cpp src/Graph.cpp src/Graph.h src/BNB.h src/BNB.cpp)
 
 add_custom_command(TARGET hpc_assignment POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory

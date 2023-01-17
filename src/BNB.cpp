@@ -6,34 +6,34 @@
 BNB::BNB() = default;
 BNB::BNB(const Graph &graph) {
     this->graph = graph;
-    this->bestRoute = std::vector<int>(graph.getNodes().size(), 0);
-    for (int i = 0; i < this->bestRoute.size(); i++) {this->bestRoute[i] = i;}
-    this->ncities = (int) graph.getNodes().size();
+    this->ncities = graph.getNcities();
+    this->bestRoute = new int[ncities];
 }
 BNB::~BNB() = default;
 
 // GETTERS:
-void BNB::setBestRoute(const std::vector<int> &route) {
+int *BNB::getBestRoute() const {
+    return bestRoute;
+}
+void BNB::setBestRoute(int *route) {
     BNB::bestRoute = route;
 }
 const Graph &BNB::getGraph() const {
     return graph;
 }
-const std::vector<int> &BNB::getBestRoute() const {
-    return bestRoute;
-}
 
 // METHODS:
-bool BNB::isRouteBetter(std::vector<int> route) {
-    return this->graph.getTravelCost(std::move(route)) < this->graph.getTravelCost(this->bestRoute);
+bool BNB::isRouteBetter(int *route) {
+    int routeCost = this->graph.getTravelCost(route);
+    return routeCost < this->bestRouteCost;
 }
 
 // ADV. METHODS:
 std::vector<std::vector<std::vector<int>>> BNB::getFirstPaths(int npes) const {
     // If there are more nodes than processes, we need to give each process more than one path:
     if (npes < int(getGraph().getNodes().size())) {
-        int nodesPerProcess = int((getGraph().getNodes().size()) / npes) + 1;
-        std::vector<std::vector<std::vector<int>>> paths(npes, std::vector<std::vector<int>>(nodesPerProcess, std::vector<int>(1, 0)));
+        int pathsPerProcess = int((getGraph().getNodes().size()) / npes) + 1;
+        std::vector<std::vector<std::vector<int>>> paths(npes, std::vector<std::vector<int>>(pathsPerProcess, std::vector<int>(1, 0)));
         for (int i = 0; i < getGraph().getNodes().size(); i++) {
             paths[i % npes][i / npes][0] = i;
         }
@@ -72,6 +72,11 @@ std::vector<std::vector<std::vector<int>>> BNB::getFirstPaths(int npes) const {
         return pathsPerProcess;
     }
 }
+
+int*** BNB::getFirstPaths(int npes) const {
+
+}
+
 void BNB::search(std::vector<int> path) {
     if(path.empty()) {
         for (int node : getGraph().getNodes()) {
@@ -104,8 +109,8 @@ void BNB::search(std::vector<int> path) {
 // OTHERS:
 void BNB::bestRouteToString() {
     std::cout << "Best route: ";
-    for (int i : this->bestRoute) {
-        std::cout << i << " ";
+    for (int i = 0; i < ncities; i++) {
+        std::cout << bestRoute[i] << " ";
     }
     std::cout << std::endl;
 }

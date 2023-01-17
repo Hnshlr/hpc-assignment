@@ -91,14 +91,17 @@ int main(int argc, char *argv[]) {
     std::string distFilename = "src/data/distances/dist11.txt";
 
     // MAIN:
+    Graph graph = *new Graph(distFilename);
+    graph.toString();
     BNB bnb = *new BNB(Graph(distFilename));
 
     // COMPUTE THE SEARCH ON EACH PROCESS:
-    std::vector<int> initialPath = {};
-    bnb.search(initialPath);
-    bnb.bestRouteToString();
-    bnb.bestCostToString();
+    int *initialRoute = new int[graph.getNcities()];
+//    std::vector<int> initialPath = {};
+//    bnb.search(initialPath);
+//    bnb.bestRouteToString();
+//    bnb.bestCostToString();
 
     // INDIVIDUAL TIMER END:
-    std::cout << "Computation took: " << (int) ((MPI_Wtime() - start) * 100) / 100.0 << " seconds.\n" << std::endl;
+//    std::cout << "Computation took: " << (int) ((MPI_Wtime() - start) * 100) / 100.0 << " seconds.\n" << std::endl;
 }

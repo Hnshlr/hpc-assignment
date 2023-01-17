@@ -14,7 +14,7 @@ private:
     int ncities{};
 
     // ADV. ATTRIBUTES:
-    std::vector<int> bestRoute;
+    int *bestRoute{};
     int bestRouteCost = INT_MAX;
 public:
     // CONSTRUCTORS/DESTRUCTORS:
@@ -24,15 +24,15 @@ public:
 
     // GETTERS & SETTERS:
     [[nodiscard]] const Graph &getGraph() const;
-    [[nodiscard]] const std::vector<int> &getBestRoute() const;
-    void setBestRoute(const std::vector<int> &route);
+    [[nodiscard]] int *getBestRoute() const;
+    void setBestRoute(int *bestRoute);
 
     // METHODS:
-    bool isRouteBetter(std::vector<int> route);
+    bool isRouteBetter(int *route);
 
     // ADV. METHODS:
-    [[nodiscard]] std::vector<std::vector<std::vector<int>>> getFirstPaths(int npes) const;
-    void search(std::vector<int> path);
+//    [[nodiscard]] std::vector<std::vector<std::vector<int>>> getFirstPaths(int npes) const;
+//    void search(int *route);
 
 
     // OTHERS:

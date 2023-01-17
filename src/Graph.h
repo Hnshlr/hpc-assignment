@@ -10,8 +10,10 @@
 class Graph {
 private:
     // ATTRIBUTES:
-    std::vector<std::vector<int>> distances;
-    std::vector<int> nodes;
+    int *nodes = new int[ncities];
+    int **distances = new int*[ncities];
+    int ncities{};
+
 public:
     // CONSTRUCTORS/DESTRUCTORS:
     Graph();
@@ -19,12 +21,13 @@ public:
     virtual ~Graph();
 
     // GETTERS:
-    [[nodiscard]] const std::vector<int> &getNodes() const;
-    [[nodiscard]] const std::vector<std::vector<int>> &getDistances() const;
+    [[nodiscard]] int getNcities() const;
+    [[nodiscard]] int *getNodes() const;
+    [[nodiscard]] int **getDistances() const;
 
     // ADV. GETTERS:
     int getDistance(int i, int j);
-    int getTravelCost(std::vector<int> route);
+    int getTravelCost(const int *route);
 
     // METHODS:
     // ...

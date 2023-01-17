@@ -1,7 +1,7 @@
 #include "Graph.h"
 
 // CONSTRUCTORS/DESTRUCTORS:
-Graph::Graph() {}
+Graph::Graph() = default;
 Graph::Graph(const std::string &distFilename) {
     // Open the distFile:
     std::ifstream distFile(distFilename);
@@ -24,17 +24,21 @@ Graph::Graph(const std::string &distFilename) {
         elements.push_back(lineElements);
     }
 
+    ncities = (int) elements.size();
+
     // Create the distances vector:
-    this->distances = std::vector<std::vector<int>>(elements.size(), std::vector<int>(elements.size(), 0));
-    for (int i = 1; i < elements.size(); i++) {
-        for (int j = 0; j < elements[i].size(); j++) {
+    this->distances = new int*[ncities];
+    for (int i = 0; i < ncities; i++) {
+        this->distances[i] = new int[ncities];
+    }
+    for (int i = 1; i < ncities; i++) {
+        for (int j = 0; j < i; j++) {
             if (i==j) {
                 this->distances[i][j] = 0;
             }
             else {
-                int element = stoi(elements[i][j]);
-                this->distances[i][j] = element;
-                this->distances[j][i] = element;
+                this->distances[i][j] = std::stoi(elements[i][j]);
+                this->distances[j][i] = std::stoi(elements[i][j]);
             }
         }
     }
@@ -43,16 +47,21 @@ Graph::Graph(const std::string &distFilename) {
     distFile.close();
 
     // Create the nodes vector:
-    this->nodes = std::vector<int>(this->distances.size(), 0);
-    for (int i = 0; i < this->nodes.size(); i++) {this->nodes[i] = i;}
+    this->nodes = new int[ncities];
+    for (int i = 0; i < ncities; i++) {
+        this->nodes[i] = i;
+    }
 }
 Graph::~Graph() = default;
 
 // GETTERS:
-const std::vector<int> &Graph::getNodes() const {
+int Graph::getNcities() const {
+    return ncities;
+}
+int *Graph::getNodes() const {
     return nodes;
 }
-const std::vector<std::vector<int>> &Graph::getDistances() const {
+int **Graph::getDistances() const {
     return distances;
 }
 
@@ -60,10 +69,10 @@ const std::vector<std::vector<int>> &Graph::getDistances() const {
 int Graph::getDistance(int i, int j) {
     return this->distances[i][j];
 }
-int Graph::getTravelCost(std::vector<int> route) {
+int Graph::getTravelCost(const int *route) {
     int cost = 0;
-    for (int i = 0; i < route.size()-1; i++) {
-        cost += this->getDistance(route[i], route[i+1]);
+    for (int i = 0; i < ncities; i++) {
+        cost+=this->distances[route[i]][route[i+1]];
     }
     return cost;
 }
@@ -73,11 +82,19 @@ int Graph::getTravelCost(std::vector<int> route) {
 
 // OTHERS:
 void Graph::toString() {
-    for (int i = 0; i < this->distances.size(); i++) {
-        for (int j = 0; j < this->distances[i].size(); j++) {
-            std::cout << getDistance(i, j) << " ";
+    std::cout << "Graph:\n";
+    std::cout << "ncities: " << ncities << "\n";
+    std::cout << "nodes: ";
+    for (int i = 0; i < ncities; i++) {
+        std::cout << nodes[i] << " ";
+    }
+    std::cout << "\n";
+    std::cout << "distances: \n";
+    for (int i = 0; i < ncities; i++) {
+        for (int j = 0; j < ncities; j++) {
+            std::cout << distances[i][j] << " ";
         }
-        std::cout << std::endl;
+        std::cout << "\n";
     }
 }
 
