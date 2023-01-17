@@ -69,14 +69,7 @@ int Graph::getTravelCost(std::vector<int> route) {
 }
 
 // METHODS:
-int Graph::getAllPossibleRoutesAmount() {
-    int n = this->distances.size();
-    int amount = 1;
-    for (int i = n; i > 1; i--) {
-        amount *= i;
-    }
-    return amount;
-}
+// ...
 
 // OTHERS:
 void Graph::toString() {

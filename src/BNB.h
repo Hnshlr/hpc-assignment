@@ -11,9 +11,11 @@ class BNB {
 private:
     // ATTRIBUTES:
     Graph graph;
+    int ncities{};
 
     // ADV. ATTRIBUTES:
     std::vector<int> bestRoute;
+    int bestRouteCost = INT_MAX;
 public:
     // CONSTRUCTORS/DESTRUCTORS:
     BNB();
@@ -26,14 +28,12 @@ public:
     void setBestRoute(const std::vector<int> &route);
 
     // METHODS:
-    static std::vector<int> findShortestRoute();
     bool isRouteBetter(std::vector<int> route);
 
     // ADV. METHODS:
     [[nodiscard]] std::vector<std::vector<std::vector<int>>> getFirstPaths(int npes) const;
     void search(std::vector<int> path);
-    // TODO: Implement the search method using MPI.
-    void searchAndUpdate(std::vector<int> path);
+
 
     // OTHERS:
     void bestRouteToString();

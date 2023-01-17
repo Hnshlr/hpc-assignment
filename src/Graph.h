@@ -27,7 +27,7 @@ public:
     int getTravelCost(std::vector<int> route);
 
     // METHODS:
-    int getAllPossibleRoutesAmount();
+    // ...
 
     // OTHERS:
     void toString();

@@ -1,13 +1,16 @@
 #include "BNB.h"
 
+#include <utility>
+
 // CONSTRUCTORS/DESTRUCTORS:
-BNB::BNB() {}
+BNB::BNB() = default;
 BNB::BNB(const Graph &graph) {
     this->graph = graph;
     this->bestRoute = std::vector<int>(graph.getNodes().size(), 0);
     for (int i = 0; i < this->bestRoute.size(); i++) {this->bestRoute[i] = i;}
+    this->ncities = (int) graph.getNodes().size();
 }
-BNB::~BNB() {}
+BNB::~BNB() = default;
 
 // GETTERS:
 void BNB::setBestRoute(const std::vector<int> &route) {
@@ -21,11 +24,8 @@ const std::vector<int> &BNB::getBestRoute() const {
 }
 
 // METHODS:
-std::vector<int> BNB::findShortestRoute() {
-    return {};
-}
 bool BNB::isRouteBetter(std::vector<int> route) {
-    return this->graph.getTravelCost(route) < this->graph.getTravelCost(this->bestRoute);
+    return this->graph.getTravelCost(std::move(route)) < this->graph.getTravelCost(this->bestRoute);
 }
 
 // ADV. METHODS:
@@ -80,7 +80,7 @@ void BNB::search(std::vector<int> path) {
             this->search(newPath);
         }
     }
-    else if(path.size() == getGraph().getDistances().size()) {
+    else if(path.size() == ncities) {
         if (this->isRouteBetter(path)) {
             this->bestRoute = path;
         }
@@ -92,37 +92,6 @@ void BNB::search(std::vector<int> path) {
                     std::vector<int> newPath = path;
                     newPath.push_back(node);
                     this->search(newPath);
-                }
-            }
-        }
-        else {
-            return;
-        }
-    }
-}
-// TODO: Implement the search method using MPI.
-void BNB::searchAndUpdate(std::vector<int> path) {
-    // ... TODO: Request the best route from the master process.
-    if(path.empty()) {
-        for (int node : getGraph().getNodes()) {
-            std::vector<int> newPath = path;
-            newPath.push_back(node);
-            this->searchAndUpdate(newPath);
-        }
-    }
-    else if(path.size() == getGraph().getDistances().size()) {
-        if (this->isRouteBetter(path)) {
-            this->bestRoute = path;
-            // TODO: Send the best route to the master process.
-        }
-    }
-    else {
-        if (this->isRouteBetter(path)) {
-            for (int node : getGraph().getNodes()) {
-                if (find(path.begin(), path.end(), node) == path.end()) {
-                    std::vector<int> newPath = path;
-                    newPath.push_back(node);
-                    this->searchAndUpdate(newPath);
                 }
             }
         }
