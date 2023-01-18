@@ -29,45 +29,81 @@ bool BNB::isRouteBetter(int *route) {
 }
 
 // ADV. METHODS:
-std::vector<std::vector<std::vector<int>>> BNB::getFirstPaths(int npes) const {
-    // If there are more nodes than processes, we need to give each process more than one path:
-    if (npes < ncities) {
-        int pathsPerProcess = int((ncities - 1) / npes);
-        std::vector<std::vector<std::vector<int>>> paths(npes, std::vector<std::vector<int>>(pathsPerProcess, std::vector<int>(1, 0)));
-        for (int i = 0; i < ncities; i++) {
-            paths[i % npes][i / npes][0] = i;
-        }
-        // Remove the empty paths:
-        for (auto & path : paths) {
-            if (path[path.size()-1][0] == 0) {
-                path.pop_back();
+std::vector<std::vector<std::vector<int>>> BNB::getFirstPaths(int npes, int startingNode) const {
+    if(npes < ncities) {
+        // Generate all possible paths, considering the starting node:
+        std::vector<std::vector<int>> paths;
+        for(int i = 0; i < ncities; i++) {
+            if(i != startingNode) {
+                std::vector<int> path;
+                path.push_back(startingNode);
+                path.push_back(i);
+                paths.push_back(path);
             }
         }
-        return paths;
+        // Distribute paths between processes:
+        // make it so that the difference between the number of paths per process is 1 at most:
+        int pathsPerProcessCount = (int) (paths.size() / npes) + 1;
+        std::vector<std::vector<std::vector<int>>> pathsPerProcess = std::vector<std::vector<std::vector<int>>>(npes, std::vector<std::vector<int>>());
+        for(int i = 0; i < paths.size(); i++) {
+            pathsPerProcess[i % npes].push_back(paths[i]);
+        }
+        return pathsPerProcess;
     }
-    // However, if there are less nodes than processes, we need go deeper and give each process more than one path:
     else {
-        int pathsAmount = ncities;
+        // Find the depth of the tree, so that there are more paths than processes (considering the starting node):
         int depth = 1;
-        while (pathsAmount < npes) {
-            pathsAmount *= pathsAmount;
-            depth+=1;
+        int pathsCount = 1;
+        while(pathsCount < npes) {
+            pathsCount *= ncities - depth;
+            depth++;
         }
-        std::vector<std::vector<int>> paths = std::vector<std::vector<int>>(pathsAmount, std::vector<int>(depth, 0));
-        for (int i = 0; i < ncities; i++) {
-            for (int j = 0; j < ncities; j++) {
-                paths[i * ncities + j][0] = i;
-                paths[i * ncities + j][1] = j;
+        std::vector<std::vector<int>> paths = std::vector<std::vector<int>>(pathsCount, std::vector<int>(depth));
+        // Find all combinations of depth-1 nodes, considering the starting node as the first node, and without repetitions:
+        std::vector<int> nodesToAssign;
+        for(int i = 0; i < ncities; i++) {
+            if(i != startingNode) {
+                nodesToAssign.push_back(i);
             }
         }
-        std::vector<std::vector<std::vector<int>>> pathsPerProcess = std::vector<std::vector<std::vector<int>>>(npes, std::vector<std::vector<int>>((pathsAmount/npes)+1, std::vector<int>(depth, 0)));
-        // Split paths into pathsPerProcess, so that each process has approximately the same amount of paths to search.
-        for (int i = 0; i < paths.size(); i++) {
-            pathsPerProcess[i%npes][i/npes] = paths[i];
+        int p = depth - 1;
+        int n = (int) nodesToAssign.size();
+        // Find all (n!)/(n-p)! permutations of p nodes:
+        std::vector<std::vector<int>> permutations = std::vector<std::vector<int>>();
+        std::vector<int> permutation = std::vector<int>(p);
+        std::vector<bool> used = std::vector<bool>(n);
+        std::function<void(int)> generatePermutations = [&](int index) {
+            if(index == p) {
+                permutations.push_back(permutation);
+                return;
+            }
+            for(int i = 0; i < n; i++) {
+                if(!used[i]) {
+                    used[i] = true;
+                    permutation[index] = nodesToAssign[i];
+                    generatePermutations(index + 1);
+                    used[i] = false;
+                }
+            }
+        };
+        generatePermutations(0);
+        // Assign the permutations to the paths:
+        for(int i = 0; i < pathsCount; i++) {
+            paths[i][0] = startingNode;
+            for(int j = 0; j < p; j++) {
+                paths[i][j + 1] = permutations[i][j];
+            }
         }
-        // Remove the empty paths from the end of each process' pathsPerProcess.
-        for (auto & pathsPerProces : pathsPerProcess) {
-            if (pathsPerProces[pathsPerProces.size()-1][0] == 0) {pathsPerProces.pop_back();}
+        // Remove permutations and permutation from memory:
+        permutations.clear();
+        permutation.clear();
+        used.clear();
+        // Distribute paths between processes:
+        int pathsPerProcessCount = (int) (paths.size() / npes) + 1;
+        std::vector<std::vector<std::vector<int>>> pathsPerProcess = std::vector<std::vector<std::vector<int>>>(npes, std::vector<std::vector<int>>());
+        // Distribute it so that there's only a difference of 1 between the number of paths per process:
+        for(int i = 0; i < pathsCount; i++) {
+            pathsPerProcess[i % npes].push_back(paths[i]);
         }
         return pathsPerProcess;
     }
@@ -83,7 +119,7 @@ void BNB::search(int *path, int pathSize, int cost, int *visited) {
         }
         return;
     }
-    if (cost > bestRouteCost) {
+    if (cost >= bestRouteCost) {
         return;
     }
     // If the path size is 0, it means no city was selected to start with. Therefore test all cases for the first node:
