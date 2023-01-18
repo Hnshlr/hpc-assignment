@@ -36,7 +36,7 @@ public:
 
     // OTHERS:
     void bestRouteToString();
-    void bestCostToString();
+    void bestCostToString() const;
 };
 
 

@@ -85,12 +85,12 @@
 //    MPI_Finalize();
 //}
 
-#define ncities 12
+#define ncities 13
 
 int main(int argc, char *argv[]) {
 
     // SETTINGS:
-    std::string distFilename = "src/data/distances/dist12.txt";
+    std::string distFilename = "src/data/distances/dist13.txt";
 
     // MAIN:
     Graph graph = *new Graph(distFilename);
@@ -109,7 +109,8 @@ int main(int argc, char *argv[]) {
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> dis(0, ncities - 1);
     pathSize = 1;
-    path[0] = dis(gen);
+//    path[0] = dis(gen);
+    path[0] = 5;
     visited[path[0]] = 1;
 
     // TIMER START:

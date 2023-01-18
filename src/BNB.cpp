@@ -83,7 +83,9 @@ void BNB::search(int *path, int pathSize, int cost, int *visited) {
         }
         return;
     }
-
+    if (cost > bestRouteCost) {
+        return;
+    }
     // If the path size is 0, it means no city was selected to start with. Therefore test all cases for the first node:
     if (pathSize == 0) {
         for (int i = 0; i < ncities; i++) {
@@ -114,6 +116,6 @@ void BNB::bestRouteToString() {
     }
     std::cout << std::endl;
 }
-void BNB::bestCostToString() {
-    std::cout << "Best cost: " << this->graph.getTravelCost(this->bestRoute) << std::endl;
+void BNB::bestCostToString() const {
+    std::cout << "Best cost: " << bestRouteCost << std::endl;
 }
