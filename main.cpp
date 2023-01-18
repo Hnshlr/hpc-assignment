@@ -15,8 +15,8 @@ int main(int argc, char *argv[]) {
     MPI_Comm_rank(MPI_COMM_WORLD, &myrank);
 
     // SETTINGS:
-//    std::string distFilename = argv[1];
-    std::string distFilename = "src/data/distances/dist17.txt";
+    std::string distFilename = argv[1];
+    // std::string distFilename = "src/data/distances/dist17.txt";
 
     // MAIN:
     Graph graph = *new Graph(distFilename);
@@ -66,9 +66,13 @@ int main(int argc, char *argv[]) {
 
     // COMPUTE THE SEARCH ON EACH PROCESS:
     for (int i = 0; i < amountOfPaths; i++) {
+        cost = 0;
         for (int j = 0; j < amountOfNodesPerPath; j++) {
             visited[paths[i][j]] = 1;
             path[j] = paths[i][j];
+            if (j > 0) {
+                cost += graph.getDistance(path[j - 1], path[j]);
+            }
         }
         bnb.search(path, amountOfNodesPerPath, cost, visited);
         for (int j = 0; j < amountOfNodesPerPath; j++) {
@@ -93,6 +97,9 @@ int main(int argc, char *argv[]) {
     // MAKE ALL PROCESSES SEND THEIR BEST ROUTE COSTS TO THE ROOT PROCESS:
     int *allBestRouteCosts = new int[npes];
     MPI_Gather(&bestRouteCost, 1, MPI_INT, allBestRouteCosts, 1, MPI_INT, 0, MPI_COMM_WORLD);
+
+    // WAIT FOR ALL PROCESSES TO BE READY:
+    MPI_Barrier(MPI_COMM_WORLD);
 
     // ROOT PROCESS: IDENTIFY WHICH PROCESS SENT THE BEST ROUTE COST:
     int bestRouteCostProcess;
