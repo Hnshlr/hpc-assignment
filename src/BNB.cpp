@@ -72,38 +72,8 @@ std::vector<std::vector<std::vector<int>>> BNB::getFirstPaths(int npes) const {
         return pathsPerProcess;
     }
 }
-
-//void BNB::search(std::vector<int> path) {
-//    if(path.empty()) {
-//        for (int node : getGraph().getNodes()) {
-//            std::vector<int> newPath = path;
-//            newPath.push_back(node);
-//            this->search(newPath);
-//        }
-//    }
-//    else if(path.size() == ncities) {
-//        if (this->isRouteBetter(path)) {
-//            this->bestRoute = path;
-//        }
-//    }
-//    else {
-//        if (this->isRouteBetter(path)) {
-//            for (int node : getGraph().getNodes()) {
-//                if (find(path.begin(), path.end(), node) == path.end()) {
-//                    std::vector<int> newPath = path;
-//                    newPath.push_back(node);
-//                    this->search(newPath);
-//                }
-//            }
-//        }
-//        else {
-//            return;
-//        }
-//    }
-//}
-
 void BNB::search(int *path, int pathSize, int cost, int *visited) {
-    // Base case: all cities have been visited
+    // If all cities have been visited, check if the path is better than the best path found so far.
     if (pathSize == ncities) {
         if (cost < bestRouteCost) {
             bestRouteCost = cost;
@@ -114,7 +84,7 @@ void BNB::search(int *path, int pathSize, int cost, int *visited) {
         return;
     }
 
-    // Try all unvisited cities as the next step in the path
+    // If the path size is 0, it means no city was selected to start with. Therefore test all cases for the first node:
     if (pathSize == 0) {
         for (int i = 0; i < ncities; i++) {
             visited[i] = 1;
@@ -123,6 +93,7 @@ void BNB::search(int *path, int pathSize, int cost, int *visited) {
             visited[i] = 0;
         }
     }
+    // If the path is uncomplete, fill out the path with unvisited cities:
     else {
         for (int i = 0; i < ncities; i++) {
             if (visited[i] == 0) {
@@ -133,15 +104,6 @@ void BNB::search(int *path, int pathSize, int cost, int *visited) {
             }
         }
     }
-//    for (int i = 0; i < ncities; i++) {
-//        if (!visited[i]) {
-//            visited[i] = 1;
-//            int newCost = cost + graph.getDistance(path[pathSize - 1], i);
-//            path[pathSize] = graph.getNodes()[i];
-//            search(path, pathSize + 1, newCost, visited);
-//            visited[i] = 0;
-//        }
-//    }
 }
 
 // OTHERS:

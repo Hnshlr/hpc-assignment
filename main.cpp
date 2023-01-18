@@ -85,12 +85,12 @@
 //    MPI_Finalize();
 //}
 
-#define ncities 13
+#define ncities 12
 
 int main(int argc, char *argv[]) {
 
     // SETTINGS:
-    std::string distFilename = "src/data/distances/dist13.txt";
+    std::string distFilename = "src/data/distances/dist12.txt";
 
     // MAIN:
     Graph graph = *new Graph(distFilename);
@@ -101,7 +101,7 @@ int main(int argc, char *argv[]) {
 
     int path[ncities];
     int pathSize;
-    int cost;
+    int cost = 0;
     int visited[ncities] = {0};
 
     // PREFERENCES:
@@ -120,5 +120,5 @@ int main(int argc, char *argv[]) {
     bnb.bestCostToString();
 
     // INDIVIDUAL TIMER END:
-    std::cout << "Computation took: " << (int) ((MPI_Wtime() - start) * 10000) / 10000.0 << " seconds.\n" << std::endl;
+    printf("Computation took: %f seconds.\n", ((int) ((MPI_Wtime() - start) * 10000) / 10000.0));
 }
