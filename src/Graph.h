@@ -7,12 +7,14 @@
 #include <sstream>
 #include <iostream>
 
+#define xncities 17     // Fixed number of cities (For compilation purposes).
+
 class Graph {
 private:
     // ATTRIBUTES:
-    int *nodes = new int[ncities];
-    int **distances = new int*[ncities];
-    int ncities{};
+    int *nodes = new int[xncities];
+    int **distances = new int*[xncities];
+    int ncities = xncities;
 
 public:
     // CONSTRUCTORS/DESTRUCTORS:

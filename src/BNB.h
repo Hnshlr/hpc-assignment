@@ -5,17 +5,18 @@
 
 #include <vector>
 #include <algorithm>
+#include <functional>
 #include <mpi.h>
 
 class BNB {
 private:
     // ATTRIBUTES:
     Graph graph;
-    int ncities{};
+    int ncities = xncities;
 
     // ADV. ATTRIBUTES:
     int *bestRoute{};
-    int bestRouteCost = INT_MAX;
+    int bestRouteCost = INT32_MAX;
 public:
     // CONSTRUCTORS/DESTRUCTORS:
     BNB();
@@ -25,6 +26,7 @@ public:
     // GETTERS & SETTERS:
     [[nodiscard]] const Graph &getGraph() const;
     [[nodiscard]] int *getBestRoute() const;
+    [[nodiscard]] int getBestRouteCost() const;
     void setBestRoute(int *bestRoute);
 
     // METHODS:

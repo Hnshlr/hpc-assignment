@@ -1,7 +1,5 @@
 #include "BNB.h"
 
-#include <utility>
-
 // CONSTRUCTORS/DESTRUCTORS:
 BNB::BNB() = default;
 BNB::BNB(const Graph &graph) {
@@ -14,6 +12,9 @@ BNB::~BNB() = default;
 // GETTERS:
 int *BNB::getBestRoute() const {
     return bestRoute;
+}
+int BNB::getBestRouteCost() const {
+    return bestRouteCost;
 }
 void BNB::setBestRoute(int *route) {
     BNB::bestRoute = route;
@@ -42,7 +43,6 @@ std::vector<std::vector<std::vector<int>>> BNB::getFirstPaths(int npes, int star
             }
         }
         // Distribute paths between processes:
-        // make it so that the difference between the number of paths per process is 1 at most:
         int pathsPerProcessCount = (int) (paths.size() / npes) + 1;
         std::vector<std::vector<std::vector<int>>> pathsPerProcess = std::vector<std::vector<std::vector<int>>>(npes, std::vector<std::vector<int>>());
         for(int i = 0; i < paths.size(); i++) {

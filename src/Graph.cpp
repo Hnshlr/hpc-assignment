@@ -83,7 +83,7 @@ int Graph::getTravelCost(const int *route) {
 // OTHERS:
 void Graph::toString() {
     std::cout << "Graph:\n";
-    std::cout << "ncities: " << ncities << "\n";
+    std::cout << "xncities: " << ncities << "\n";
     std::cout << "nodes: ";
     for (int i = 0; i < ncities; i++) {
         std::cout << nodes[i] << " ";
