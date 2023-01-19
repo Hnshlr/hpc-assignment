@@ -7,7 +7,7 @@
 #include <sstream>
 #include <iostream>
 
-#define xncities 17     // Fixed number of cities (For compilation purposes).
+#define xncities 19     // Fixed number of cities (For compilation purposes).
 
 class Graph {
 private:

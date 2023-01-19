@@ -17,6 +17,7 @@ private:
     // ADV. ATTRIBUTES:
     int *bestRoute{};
     int bestRouteCost = INT32_MAX;
+    int globalBestRouteCost = INT32_MAX;
 public:
     // CONSTRUCTORS/DESTRUCTORS:
     BNB();
@@ -24,6 +25,7 @@ public:
     virtual ~BNB();
 
     // GETTERS & SETTERS:
+    [[nodiscard]] int getNcities() const;
     [[nodiscard]] const Graph &getGraph() const;
     [[nodiscard]] int *getBestRoute() const;
     [[nodiscard]] int getBestRouteCost() const;
@@ -35,6 +37,7 @@ public:
     // ADV. METHODS:
     [[nodiscard]] std::vector<std::vector<std::vector<int>>> getFirstPaths(int npes, int startingNode) const;
     void search(int *path, int pathSize, int cost, int *visited);
+    void searchMPI(int *path, int pathSize, int cost, int *visited);
 
     // OTHERS:
     void bestRouteToString();

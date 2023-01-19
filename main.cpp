@@ -16,26 +16,27 @@ int main(int argc, char *argv[]) {
 
     // SETTINGS:
     std::string distFilename = argv[1];
-    // std::string distFilename = "src/data/distances/dist17.txt";
+    // std::string distFilename = "src/data/distances/dist11.txt";
 
     // MAIN:
     Graph graph = *new Graph(distFilename);
     BNB bnb = *new BNB(graph);
+    int ncities = bnb.getNcities();
 
     // PREFERENCES:
-    int path[xncities];              // Path to be computed
+    int path[ncities];              // Path to be computed
     int cost = 0;                   // Cost of the path
     int visited[xncities] = {0};     // Visited nodes
     if (myrank == 0) {              // Root process initializes the path, by selecting a random node to start with
         std::random_device rd;
         std::mt19937 gen(rd());
-        std::uniform_int_distribution<> dis(0, xncities - 1);
+        std::uniform_int_distribution<> dis(0, ncities - 1);
         path[0] = dis(gen);
         visited[path[0]] = 1;
         printf("PROCESS %d: Selected starting node: %d\n", myrank, path[0]);
     }
     // BROADCAST THE STARTING NODE:
-    MPI_Bcast(path, xncities, MPI_INT, 0, MPI_COMM_WORLD);
+    MPI_Bcast(path, ncities, MPI_INT, 0, MPI_COMM_WORLD);
 
     // FIND EACH PROCESS' STARTING PATHS, DEPENDING ON THE AMOUNT OF PROCESSES AND THE RANK OF THE CURRENT PROCESS:
     std::vector<std::vector<std::vector<int>>> pathsVectors = bnb.getFirstPaths(npes, path[0]);
@@ -74,7 +75,8 @@ int main(int argc, char *argv[]) {
                 cost += graph.getDistance(path[j - 1], path[j]);
             }
         }
-        bnb.search(path, amountOfNodesPerPath, cost, visited);
+        // bnb.search(path, amountOfNodesPerPath, cost, visited);
+        bnb.searchMPI(path, amountOfNodesPerPath, cost, visited);
         for (int j = 0; j < amountOfNodesPerPath; j++) {
             visited[paths[i][j]] = 0;
         }
@@ -83,13 +85,12 @@ int main(int argc, char *argv[]) {
     bnb.bestRouteToString();
     bnb.bestCostToString();
     int bestRouteCost = bnb.getBestRouteCost();
-    int bestRoute[xncities];
-    for (int i = 0; i < xncities; i++) {
+    int bestRoute[ncities];
+    for (int i = 0; i < ncities; i++) {
         bestRoute[i] = bnb.getBestRoute()[i];
     }
     // INDIVIDUAL TIMER END:
     printf("Computation took: %f seconds.\n", ((int) ((MPI_Wtime() - start) * 10000) / 10000.0));
-
 
     // WAIT FOR ALL PROCESSES TO BE READY:
     MPI_Barrier(MPI_COMM_WORLD);
@@ -105,6 +106,7 @@ int main(int argc, char *argv[]) {
     int bestRouteCostProcess;
     if (myrank == 0) {
         bestRouteCost = allBestRouteCosts[0];
+        bestRouteCostProcess = 0;
         for (int i = 1; i < npes; i++) {
             if (allBestRouteCosts[i] < bestRouteCost) {
                 bestRouteCost = allBestRouteCosts[i];
@@ -115,15 +117,20 @@ int main(int argc, char *argv[]) {
         printf("PROCESS %d: The best route cost is: %d.\n", myrank, bestRouteCost);
     }
 
-    // BROADCAST THE ID OF THE PROCESS THAT FOUND THE BEST ROUTE COST:
+    // BROADCAST THE BEST ROUTE COST PROCESS:
     MPI_Bcast(&bestRouteCostProcess, 1, MPI_INT, 0, MPI_COMM_WORLD);
 
-    // MAKE THE PROCESS THAT FOUND THE BEST ROUTE COST SEND ITS BEST ROUTE TO THE ROOT PROCESS:
-    if (myrank == bestRouteCostProcess) {
-        MPI_Send(bestRoute, xncities, MPI_INT, 0, 0, MPI_COMM_WORLD);
-    }
+    // WAIT FOR ALL PROCESSES TO BE READY:
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    // MAKE THE PROCESS THAT FOUND THE BEST ROUTE COST BROADCAST ITS BEST ROUTE TO ALL PROCESSES:
+    MPI_Bcast(bestRoute, ncities, MPI_INT, bestRouteCostProcess, MPI_COMM_WORLD);
+
+    // WAIT FOR ALL PROCESSES TO BE READY:
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    // MAKE THE PROCESS 0 ANNOUNCE THE BEST ROUTE:
     if (myrank == 0) {
-        MPI_Recv(bestRoute, xncities, MPI_INT, bestRouteCostProcess, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
         printf("PROCESS %d: The best route is: [", myrank);
         for (int i : bestRoute) {
             printf("%d, ", i);
@@ -136,7 +143,7 @@ int main(int argc, char *argv[]) {
         printf("Total computation took: %f seconds.\n", ((int) ((MPI_Wtime() - start) * 10000) / 10000.0));
     }
 
-    // Finalize MPI:
+    // FINALIZE THE MPI ENVIRONMENT:
     MPI_Finalize();
 
 }
