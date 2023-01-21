@@ -62,9 +62,6 @@ int main(int argc, char *argv[]) {
     }
     printf("]\n");
 
-    // WAIT FOR ALL PROCESSES TO BE READY:
-    MPI_Barrier(MPI_COMM_WORLD);
-
     // TIMER START:
     double start = MPI_Wtime();
 
@@ -94,15 +91,11 @@ int main(int argc, char *argv[]) {
     // INDIVIDUAL TIMER END:
     printf("Computation took: %f seconds.\n", ((int) ((MPI_Wtime() - start) * 10000) / 10000.0));
 
-    // WAIT FOR ALL PROCESSES TO BE READY:
-    MPI_Barrier(MPI_COMM_WORLD);
 
     // MAKE ALL PROCESSES SEND THEIR BEST ROUTE COSTS TO THE ROOT PROCESS:
     int *allBestRouteCosts = new int[npes];
     MPI_Gather(&bestRouteCost, 1, MPI_INT, allBestRouteCosts, 1, MPI_INT, 0, MPI_COMM_WORLD);
 
-    // WAIT FOR ALL PROCESSES TO BE READY:
-    MPI_Barrier(MPI_COMM_WORLD);
 
     // ROOT PROCESS: IDENTIFY WHICH PROCESS SENT THE BEST ROUTE COST:
     int bestRouteCostProcess;
@@ -122,14 +115,8 @@ int main(int argc, char *argv[]) {
     // BROADCAST THE BEST ROUTE COST PROCESS:
     MPI_Bcast(&bestRouteCostProcess, 1, MPI_INT, 0, MPI_COMM_WORLD);
 
-    // WAIT FOR ALL PROCESSES TO BE READY:
-    MPI_Barrier(MPI_COMM_WORLD);
-
     // MAKE THE PROCESS THAT FOUND THE BEST ROUTE COST BROADCAST ITS BEST ROUTE TO ALL PROCESSES:
     MPI_Bcast(bestRoute, ncities, MPI_INT, bestRouteCostProcess, MPI_COMM_WORLD);
-
-    // WAIT FOR ALL PROCESSES TO BE READY:
-    MPI_Barrier(MPI_COMM_WORLD);
 
     // MAKE THE PROCESS 0 ANNOUNCE THE BEST ROUTE:
     if (myrank == 0) {
