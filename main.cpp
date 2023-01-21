@@ -8,9 +8,8 @@
 int main(int argc, char *argv[]) {
 
     // INITIALIZE THE MPI ENVIRONMENT:
-    MPI_Init(&argc, &argv);
-    // AMOUNT OF PROCESSES, AND RANK OF THE CURRENT PROCESS:
     int npes, myrank;
+    MPI_Init(&argc, &argv);
     MPI_Comm_size(MPI_COMM_WORLD, &npes);
     MPI_Comm_rank(MPI_COMM_WORLD, &myrank);
 
@@ -18,7 +17,7 @@ int main(int argc, char *argv[]) {
     std::string distFilename = argv[1];
     // std::string distFilename = "src/data/distances/dist11.txt";
 
-    // MAIN:
+    // GRAPH AND BRANCH-AND-BOUND OBJECTS INITIALIZATION:
     Graph graph = *new Graph(distFilename);
     BNB bnb = *new BNB(graph);
     int ncities = bnb.getNcities();
@@ -65,7 +64,9 @@ int main(int argc, char *argv[]) {
     // TIMER START:
     double start = MPI_Wtime();
 
-    // COMPUTE THE SEARCH ON EACH PROCESS:
+
+
+    // MAIN JOB: COMPUTE THE SEARCH ON EACH PROCESS:
     for (int i = 0; i < amountOfPaths; i++) {
         cost = 0;
         for (int j = 0; j < amountOfNodesPerPath; j++) {
@@ -88,14 +89,15 @@ int main(int argc, char *argv[]) {
     for (int i = 0; i < ncities; i++) {
         bestRoute[i] = bnb.getBestRoute()[i];
     }
+
+
+
     // INDIVIDUAL TIMER END:
     printf("Computation took: %f seconds.\n", ((int) ((MPI_Wtime() - start) * 10000) / 10000.0));
-
 
     // MAKE ALL PROCESSES SEND THEIR BEST ROUTE COSTS TO THE ROOT PROCESS:
     int *allBestRouteCosts = new int[npes];
     MPI_Gather(&bestRouteCost, 1, MPI_INT, allBestRouteCosts, 1, MPI_INT, 0, MPI_COMM_WORLD);
-
 
     // ROOT PROCESS: IDENTIFY WHICH PROCESS SENT THE BEST ROUTE COST:
     int bestRouteCostProcess;
