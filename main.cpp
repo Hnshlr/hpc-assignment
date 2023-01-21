@@ -32,6 +32,9 @@ int main(int argc, char *argv[]) {
         std::mt19937 gen(rd());
         std::uniform_int_distribution<> dis(0, ncities - 1);
         path[0] = dis(gen);
+        if (argv[2] != nullptr) {
+            path[0] = std::stoi(argv[2]);
+        }
         visited[path[0]] = 1;
         printf("PROCESS %d: Selected starting node: %d\n", myrank, path[0]);
     }
@@ -75,8 +78,7 @@ int main(int argc, char *argv[]) {
                 cost += graph.getDistance(path[j - 1], path[j]);
             }
         }
-        // bnb.search(path, amountOfNodesPerPath, cost, visited);
-        bnb.searchMPI(path, amountOfNodesPerPath, cost, visited);
+        bnb.search(path, amountOfNodesPerPath, cost, visited);
         for (int j = 0; j < amountOfNodesPerPath; j++) {
             visited[paths[i][j]] = 0;
         }

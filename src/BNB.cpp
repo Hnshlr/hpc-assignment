@@ -146,43 +146,6 @@ void BNB::search(int *path, int pathSize, int cost, int *visited) {
         }
     }
 }
-void BNB::searchMPI(int *path, int pathSize, int cost, int *visited) {
-    // If all cities have been visited, check if the path is better than the best path found so far.
-    if (pathSize == ncities) {
-        if (cost < bestRouteCost && cost < globalBestRouteCost) {
-            bestRouteCost = cost;
-            for (int i = 0; i < ncities; i++) {
-                bestRoute[i] = path[i];
-            }
-        }
-        // Share the bestRouteCost with other processes
-        MPI_Allreduce(&bestRouteCost, &globalBestRouteCost, 1, MPI_INT, MPI_MIN, MPI_COMM_WORLD);
-        return;
-    }
-    if (cost >= bestRouteCost || cost >= globalBestRouteCost) {
-        return;
-    }
-    // If the path size is 0, it means no city was selected to start with. Therefore test all cases for the first node:
-    if (pathSize == 0) {
-        for (int i = 0; i < ncities; i++) {
-            visited[i] = 1;
-            path[pathSize] = i;
-            search(path, pathSize + 1, cost, visited);
-            visited[i] = 0;
-        }
-    }
-        // If the path is uncomplete, fill out the path with unvisited cities:
-    else {
-        for (int i = 0; i < ncities; i++) {
-            if (visited[i] == 0) {
-                visited[i] = 1;
-                path[pathSize] = i;
-                search(path, pathSize + 1, cost + graph.getDistance(path[pathSize - 1], i), visited);
-                visited[i] = 0;
-            }
-        }
-    }
-}
 
 
 
