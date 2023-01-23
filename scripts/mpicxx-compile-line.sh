@@ -1,0 +1,1 @@
+module load intel && mpicxx main.cpp src/Graph.cpp src/Graph.h src/BNB.h src/BNB.cpp
