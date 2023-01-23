@@ -112,26 +112,24 @@ std::vector<std::vector<std::vector<int>>> BNB::getFirstPaths(int npes, int star
     }
 }
 void BNB::search(int *path, int pathSize, int cost, int *visited) {
-    // If all cities have been visited, check if the path is better than the best path found so far.
-    if (pathSize == ncities) {
+    // Base case: If the path is empty (ie. no city was selected to start with), test all cases for the first node:
+    if (pathSize == 0) {
+        for (int i = 0; i < ncities; i++) {
+            visited[i] = 1;
+            path[pathSize] = i;
+            if (cost + graph.getDistance(path[pathSize - 1], i) < bestRouteCost) {
+                search(path, pathSize + 1, cost, visited);
+            }
+            visited[i] = 0;
+        }
+    }
+    // If the path is complete, check if it's better than the best path found so far:
+    else if (pathSize == ncities) {
         if (cost < bestRouteCost) {
             bestRouteCost = cost;
             for (int i = 0; i < ncities; i++) {
                 bestRoute[i] = path[i];
             }
-        }
-        return;
-    }
-    if (cost >= bestRouteCost) {
-        return;
-    }
-    // If the path size is 0, it means no city was selected to start with. Therefore test all cases for the first node:
-    if (pathSize == 0) {
-        for (int i = 0; i < ncities; i++) {
-            visited[i] = 1;
-            path[pathSize] = i;
-            search(path, pathSize + 1, cost, visited);
-            visited[i] = 0;
         }
     }
     // If the path is uncomplete, fill out the path with unvisited cities:
@@ -140,7 +138,9 @@ void BNB::search(int *path, int pathSize, int cost, int *visited) {
             if (visited[i] == 0) {
                 visited[i] = 1;
                 path[pathSize] = i;
-                search(path, pathSize + 1, cost + graph.getDistance(path[pathSize - 1], i), visited);
+                if (cost + graph.getDistance(path[pathSize - 1], i) < bestRouteCost) {
+                    search(path, pathSize + 1, cost + graph.getDistance(path[pathSize - 1], i), visited);
+                }
                 visited[i] = 0;
             }
         }
