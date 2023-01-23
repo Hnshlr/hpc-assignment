@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
 
     // SETTINGS:
     std::string distFilename = argv[1];
-    // std::string distFilename = "src/data/distances/dist11.txt";
+//     std::string distFilename = "src/data/distances/dist11.txt";
 
     // GRAPH AND BRANCH-AND-BOUND OBJECTS INITIALIZATION:
     Graph graph = *new Graph(distFilename);
@@ -41,7 +41,12 @@ int main(int argc, char *argv[]) {
     MPI_Bcast(path, ncities, MPI_INT, 0, MPI_COMM_WORLD);
 
     // FIND EACH PROCESS' STARTING PATHS, DEPENDING ON THE AMOUNT OF PROCESSES AND THE RANK OF THE CURRENT PROCESS:
-    std::vector<std::vector<std::vector<int>>> pathsVectors = bnb.getFirstPaths(npes, path[0]);
+    std::vector<std::vector<std::vector<int>>> pathsVectors = bnb.getFirstPathsV2(npes, path[0]);
+    int totalAmountOfPaths = 0;     // Total amount of paths to be computed
+    for (const auto & pathsVector : pathsVectors) {
+        totalAmountOfPaths += (int) pathsVector.size();
+    }
+//    if(myrank==0) printf("PROCESS %d: There are %d paths in total.\n", myrank, totalAmountOfPaths);
     int amountOfPaths = (int) pathsVectors[myrank].size();    // Amount of paths to be computed by the current process
     int amountOfNodesPerPath = (int) pathsVectors[myrank][0].size();    // Amount of nodes per path
     int **paths = new int *[amountOfPaths];               // Pointer to the paths to be computed by the current process
@@ -51,20 +56,20 @@ int main(int argc, char *argv[]) {
             paths[i][j] = pathsVectors[myrank][i][j];    // Fill the paths with the data from the pathsVectors
         }
     }
-    printf("PROCESS %d: Was assigned %d paths to search from: [", myrank, amountOfPaths);
-    for (int i = 0; i < amountOfPaths; i++) {
-        printf("[");
-        for (int j = 0; j < amountOfNodesPerPath; j++) {
-            printf("%d, ", paths[i][j]);
-        }
-        printf("], ");
-    }
-    printf("]\n");
+//    printf("PROCESS %d: Was assigned %d paths to search from.\n", myrank, amountOfPaths);
+//    printf("PROCESS %d: Was assigned %d paths to search from: [", myrank, amountOfPaths);
+//    for (int i = 0; i < amountOfPaths; i++) {
+//        printf("[");
+//        for (int j = 0; j < amountOfNodesPerPath; j++) {
+//            printf("%d, ", paths[i][j]);
+//        }
+//        printf("], ");
+//    }
+//    printf("]\n");
 
     // TIMER START:
     double start = MPI_Wtime();
-
-
+    if(myrank==0) printf("PROCESS %d: Starting timer.\n", myrank);
 
     // MAIN JOB: COMPUTE THE SEARCH ON EACH PROCESS:
     for (int i = 0; i < amountOfPaths; i++) {
@@ -76,24 +81,29 @@ int main(int argc, char *argv[]) {
                 cost += graph.getDistance(path[j - 1], path[j]);
             }
         }
-        bnb.search(path, amountOfNodesPerPath, cost, visited);
+        // TODO: WORK IN PROGRESS
+        if ((totalAmountOfPaths%npes) == 0 && i<(totalAmountOfPaths/npes)-1
+        || (totalAmountOfPaths%npes) != 0 && i<(totalAmountOfPaths/npes)) {
+            bnb.searchMPI(path, amountOfNodesPerPath, cost, visited);
+        } else {
+            bnb.search(path, amountOfNodesPerPath, cost, visited);
+        }
+        // TODO: WORK IN PROGRESS
         for (int j = 0; j < amountOfNodesPerPath; j++) {
             visited[paths[i][j]] = 0;
         }
     }
-    printf("PROCESS %d: Finished searching. Here are my results:\n", myrank);
-    bnb.bestRouteToString();
-    bnb.bestCostToString();
+//    printf("PROCESS %d: Finished searching. Here are my results:\n", myrank);
+//    bnb.bestRouteToString();
+//    bnb.bestCostToString();
     int bestRouteCost = bnb.getBestRouteCost();
     int bestRoute[ncities];
     for (int i = 0; i < ncities; i++) {
         bestRoute[i] = bnb.getBestRoute()[i];
     }
 
-
-
     // INDIVIDUAL TIMER END:
-    printf("Computation took: %f seconds.\n", ((int) ((MPI_Wtime() - start) * 10000) / 10000.0));
+//    printf("Computation took: %f seconds.\n", ((int) ((MPI_Wtime() - start) * 10000) / 10000.0));
 
     // MAKE ALL PROCESSES SEND THEIR BEST ROUTE COSTS TO THE ROOT PROCESS:
     int *allBestRouteCosts = new int[npes];

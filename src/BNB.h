@@ -35,9 +35,10 @@ public:
 
     // ADV. METHODS:
     [[nodiscard]] std::vector<std::vector<std::vector<int>>> getFirstPaths(int npes, int startingNode) const;
+    [[nodiscard]] std::vector<std::vector<std::vector<int>>> getFirstPathsV2(int npes, int startingNode) const;
     void search(int *path, int pathSize, int cost, int *visited);
-    void initSearchMPI(int *path, int pathSize, int cost, int *visited);
     void searchMPI(int *path, int pathSize, int cost, int *visited);
+
 
     // OTHERS:
     void bestRouteToString();
