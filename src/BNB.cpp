@@ -203,12 +203,14 @@ void BNB::search(int *path, int pathSize, int cost, int *visited) {
         }
     }
 }
-void BNB::searchMPI(int *path, int pathSize, int cost, int *visited) {
+void BNB::searchMPI(int *path, int pathSize, int cost, int *visited, int myrank, int npes) {
+    // TODO: WORK IN PROGRESS:
     search(path, pathSize, cost, visited);
-    MPI_Allreduce(MPI_IN_PLACE, &bestRouteCost, 1, MPI_INT, MPI_MIN, MPI_COMM_WORLD);
-    if(bestRouteCost == cost) {
-        MPI_Bcast(bestRoute, ncities, MPI_INT, 0, MPI_COMM_WORLD);
-    }
+    int bestCostAndRank[2] = {bestRouteCost, myrank};
+    MPI_Allreduce(MPI_IN_PLACE, bestCostAndRank, 1, MPI_2INT, MPI_MINLOC, MPI_COMM_WORLD);
+    MPI_Bcast(bestRoute, ncities, MPI_INT, bestCostAndRank[1], MPI_COMM_WORLD);
+    bestRouteCost = bestCostAndRank[0];
+    // TODO: END OF WORK IN PROGRESS.
 }
 
 // OTHERS:

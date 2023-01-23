@@ -46,7 +46,7 @@ int main(int argc, char *argv[]) {
     for (const auto & pathsVector : pathsVectors) {
         totalAmountOfPaths += (int) pathsVector.size();
     }
-//    if(myrank==0) printf("PROCESS %d: There are %d paths in total.\n", myrank, totalAmountOfPaths);
+    if(myrank==0) printf("PROCESS %d: There are %d paths in total.\n", myrank, totalAmountOfPaths);
     int amountOfPaths = (int) pathsVectors[myrank].size();    // Amount of paths to be computed by the current process
     int amountOfNodesPerPath = (int) pathsVectors[myrank][0].size();    // Amount of nodes per path
     int **paths = new int *[amountOfPaths];               // Pointer to the paths to be computed by the current process
@@ -56,16 +56,16 @@ int main(int argc, char *argv[]) {
             paths[i][j] = pathsVectors[myrank][i][j];    // Fill the paths with the data from the pathsVectors
         }
     }
-//    printf("PROCESS %d: Was assigned %d paths to search from.\n", myrank, amountOfPaths);
-//    printf("PROCESS %d: Was assigned %d paths to search from: [", myrank, amountOfPaths);
-//    for (int i = 0; i < amountOfPaths; i++) {
-//        printf("[");
-//        for (int j = 0; j < amountOfNodesPerPath; j++) {
-//            printf("%d, ", paths[i][j]);
-//        }
-//        printf("], ");
-//    }
-//    printf("]\n");
+    printf("PROCESS %d: Was assigned %d paths to search from.\n", myrank, amountOfPaths);
+    printf("PROCESS %d: Was assigned %d paths to search from: [", myrank, amountOfPaths);
+    for (int i = 0; i < amountOfPaths; i++) {
+        printf("[");
+        for (int j = 0; j < amountOfNodesPerPath; j++) {
+            printf("%d, ", paths[i][j]);
+        }
+        printf("], ");
+    }
+    printf("]\n");
 
     // TIMER START:
     double start = MPI_Wtime();
@@ -81,21 +81,21 @@ int main(int argc, char *argv[]) {
                 cost += graph.getDistance(path[j - 1], path[j]);
             }
         }
-        // TODO: WORK IN PROGRESS
+        // TODO: WORK IN PROGRESS:
         if ((totalAmountOfPaths%npes) == 0 && i<(totalAmountOfPaths/npes)-1
         || (totalAmountOfPaths%npes) != 0 && i<(totalAmountOfPaths/npes)) {
-            bnb.searchMPI(path, amountOfNodesPerPath, cost, visited);
+            bnb.searchMPI(path, amountOfNodesPerPath, cost, visited, myrank, npes);
         } else {
             bnb.search(path, amountOfNodesPerPath, cost, visited);
         }
-        // TODO: WORK IN PROGRESS
+        // TODO: END OF WORK IN PROGRESS.
         for (int j = 0; j < amountOfNodesPerPath; j++) {
             visited[paths[i][j]] = 0;
         }
     }
-//    printf("PROCESS %d: Finished searching. Here are my results:\n", myrank);
-//    bnb.bestRouteToString();
-//    bnb.bestCostToString();
+    printf("PROCESS %d: Finished searching. Here are my results:\n", myrank);
+    bnb.bestRouteToString();
+    bnb.bestCostToString();
     int bestRouteCost = bnb.getBestRouteCost();
     int bestRoute[ncities];
     for (int i = 0; i < ncities; i++) {
@@ -103,7 +103,7 @@ int main(int argc, char *argv[]) {
     }
 
     // INDIVIDUAL TIMER END:
-//    printf("Computation took: %f seconds.\n", ((int) ((MPI_Wtime() - start) * 10000) / 10000.0));
+    printf("Computation took: %f seconds.\n", ((int) ((MPI_Wtime() - start) * 10000) / 10000.0));
 
     // MAKE ALL PROCESSES SEND THEIR BEST ROUTE COSTS TO THE ROOT PROCESS:
     int *allBestRouteCosts = new int[npes];
