@@ -1,0 +1,1 @@
+cd /scratch/s388885/hpc/hpc-assignment && module load intel && mpicxx main.cpp src/Graph.cpp src/Graph.h src/BNB.h src/BNB.cpp && cd ../

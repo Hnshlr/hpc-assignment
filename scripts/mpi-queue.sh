@@ -1,0 +1,1 @@
+cd /scratch/s388885/hpc/jobs && qsub /scratch/s388885/hpc/hpc-assignment/queues/d17pXsn0.sub && qsub /scratch/s388885/hpc/hpc-assignment/queues/d17pXsnX.sub && clear && qstat -a && ls

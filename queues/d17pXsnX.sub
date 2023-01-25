@@ -1,0 +1,26 @@
+#!/bin/bash
+#PBS -N d17pXsnX
+
+#PBS -l select=4:ncpus=16:mpiprocs=16
+
+#PBS -q one_day
+#PBS -m abe 
+#PBS -M hans.haller.885@cranfield.ac.uk
+#PBS -j oe
+#PBS -W sandbox=PRIVATE
+#PBS -k n
+ln -s $PWD $PBS_O_WORKDIR/$PBS_JOBID
+cd $PBS_O_WORKDIR
+export cpus=`cat $PBS_NODEFILE | wc -l`
+module load intel
+
+for i in 1 2 4 8 16 32 48 64
+do
+for j in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
+do
+mpirun -machinefile $PBS_NODEFILE -np $i /scratch/s388885/hpc/hpc-assignment/a.out "/scratch/s388885/hpc/hpc-assignment/src/data/distances/dist17.txt" $j
+done
+done
+
+rm $PBS_O_WORKDIR/$PBS_JOBID
+#
