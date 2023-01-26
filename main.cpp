@@ -61,7 +61,6 @@ int main(int argc, char *argv[]) {
     double start = MPI_Wtime();
 
     // MAIN JOB: COMPUTE THE SEARCH ON EACH PROCESS:
-    if(myrank==0) printf("PROCESS %d: All processes begun their search.\n", myrank);
     for (int i = 0; i < amountOfPaths; i++) {
         cost = 0;
         for (int j = 0; j < amountOfNodesPerPath; j++) {
@@ -71,7 +70,7 @@ int main(int argc, char *argv[]) {
                 cost += graph.getDistance(path[j - 1], path[j]);
             }
         }
-        // TODO: WORK IN PROGRESS:
+        // TODO: WORK/OPTIMISATION IN PROGRESS:
         if ((totalAmountOfPaths%npes) == 0 && i<(totalAmountOfPaths/npes)-1
         || (totalAmountOfPaths%npes) != 0 && i<(totalAmountOfPaths/npes)) {
             bnb.searchMPI(path, amountOfNodesPerPath, cost, visited, myrank, npes);
@@ -83,42 +82,20 @@ int main(int argc, char *argv[]) {
             visited[paths[i][j]] = 0;
         }
     }
-    if(myrank==0) printf("PROCESS %d: All processes finished their search.\n", myrank);
-    int bestRouteCost = bnb.getBestRouteCost();
-    int bestRoute[ncities];
-    for (int i = 0; i < ncities; i++) {
-        bestRoute[i] = bnb.getBestRoute()[i];
-    }
+    int bestCostAndRank[2] = {bnb.getBestRouteCost(), myrank};
+    MPI_Allreduce(MPI_IN_PLACE, bestCostAndRank, 1, MPI_2INT, MPI_MINLOC, MPI_COMM_WORLD);
+    MPI_Bcast(bnb.getBestRoute(), ncities, MPI_INT, bestCostAndRank[1], MPI_COMM_WORLD);
+    bnb.setBestRouteCost(bestCostAndRank[0]);
 
-    // MAKE ALL PROCESSES SEND THEIR BEST ROUTE COSTS TO THE ROOT PROCESS:
-    int *allBestRouteCosts = new int[npes];
-    MPI_Gather(&bestRouteCost, 1, MPI_INT, allBestRouteCosts, 1, MPI_INT, 0, MPI_COMM_WORLD);
-
-    // ROOT PROCESS: IDENTIFY WHICH PROCESS SENT THE BEST ROUTE COST:
-    int bestRouteCostProcess;
+    // MAKE THE PROCESS 0 ANNOUNCE THE BEST COST AND ROUTE:
     if (myrank == 0) {
-        bestRouteCost = allBestRouteCosts[0];
-        bestRouteCostProcess = 0;
-        for (int i = 1; i < npes; i++) {
-            if (allBestRouteCosts[i] < bestRouteCost) {
-                bestRouteCost = allBestRouteCosts[i];
-                bestRouteCostProcess = i;
-            }
-        }
-        printf("PROCESS %d: The best route cost is: %d.\n", myrank, bestRouteCost);
-    }
-
-    // BROADCAST THE BEST ROUTE COST PROCESS:
-    MPI_Bcast(&bestRouteCostProcess, 1, MPI_INT, 0, MPI_COMM_WORLD);
-
-    // MAKE THE PROCESS THAT FOUND THE BEST ROUTE COST BROADCAST ITS BEST ROUTE TO ALL PROCESSES:
-    MPI_Bcast(bestRoute, ncities, MPI_INT, bestRouteCostProcess, MPI_COMM_WORLD);
-
-    // MAKE THE PROCESS 0 ANNOUNCE THE BEST ROUTE:
-    if (myrank == 0) {
+        printf("PROCESS %d: The best route cost is: %d.\n", myrank, bnb.getBestRouteCost());
         printf("PROCESS %d: The best route is: [", myrank);
-        for (int i : bestRoute) {
-            printf("%d, ", i);
+        for (int i = 0; i < ncities; i++) {
+            printf("%d", bnb.getBestRoute()[i]);
+            if (i < ncities - 1) {
+                printf(", ");
+            }
         }
         printf("]\n");
     }

@@ -22,6 +22,9 @@ int BNB::getBestRouteCost() const {
 void BNB::setBestRoute(int *route) {
     BNB::bestRoute = route;
 }
+void BNB::setBestRouteCost(int bestRouteCost) {
+    BNB::bestRouteCost = bestRouteCost;
+}
 const Graph &BNB::getGraph() const {
     return graph;
 }
@@ -115,7 +118,7 @@ std::vector<std::vector<std::vector<int>>> BNB::getFirstPathsV2(int npes, int st
     // Find the depth of the tree, so that there are more paths than processes (considering the starting node):
     int depth = 1;
     int pathsCount = 1;
-    while(pathsCount < npes || depth != 4) {
+    while(pathsCount < npes || depth != 5) {    // 5 is an arbitrary selected depth, following various tests.
         pathsCount *= ncities - depth;
         depth++;
     }
@@ -204,7 +207,7 @@ void BNB::search(int *path, int pathSize, int cost, int *visited) {
     }
 }
 void BNB::searchMPI(int *path, int pathSize, int cost, int *visited, int myrank, int npes) {
-    // TODO: WORK IN PROGRESS:
+    // TODO: WORK/OPTIMISATION IN PROGRESS:
     search(path, pathSize, cost, visited);
     int bestCostAndRank[2] = {bestRouteCost, myrank};
     MPI_Allreduce(MPI_IN_PLACE, bestCostAndRank, 1, MPI_2INT, MPI_MINLOC, MPI_COMM_WORLD);

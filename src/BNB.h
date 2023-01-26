@@ -29,6 +29,7 @@ public:
     [[nodiscard]] int *getBestRoute() const;
     [[nodiscard]] int getBestRouteCost() const;
     void setBestRoute(int *bestRoute);
+    void setBestRouteCost(int bestRouteCost);
 
     // METHODS:
     bool isRouteBetter(int *route);
