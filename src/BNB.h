@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <functional>
 #include <mpi.h>
+#include <string>
 
 class BNB {
 private:
@@ -32,7 +33,7 @@ public:
     void setBestRouteCost(int bestRouteCost);
 
     // METHODS:
-    bool isRouteBetter(int *route);
+    // ...
 
     // ADV. METHODS:
     [[nodiscard]] std::vector<std::vector<std::vector<int>>> getFirstPaths(int npes, int startingNode) const;
@@ -42,8 +43,7 @@ public:
 
 
     // OTHERS:
-    void bestRouteToString();
-    void bestCostToString() const;
+    [[nodiscard]] std::string bestRouteToString() const;
 };
 
 

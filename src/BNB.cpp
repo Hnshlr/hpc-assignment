@@ -30,10 +30,7 @@ const Graph &BNB::getGraph() const {
 }
 
 // METHODS:
-bool BNB::isRouteBetter(int *route) {
-    int routeCost = this->graph.getTravelCost(route);
-    return routeCost < this->bestRouteCost;
-}
+// ...
 
 // ADV. METHODS:
 std::vector<std::vector<std::vector<int>>> BNB::getFirstPaths(int npes, int startingNode) const {
@@ -217,13 +214,14 @@ void BNB::searchMPI(int *path, int pathSize, int cost, int *visited, int myrank,
 }
 
 // OTHERS:
-void BNB::bestRouteToString() {
-    std::cout << "Best route: ";
+std::string BNB::bestRouteToString() const {
+    std::string bestRouteString = "[";
     for (int i = 0; i < ncities; i++) {
-        std::cout << bestRoute[i] << " ";
+        bestRouteString += std::to_string(bestRoute[i]);
+        if (i != ncities - 1) {
+            bestRouteString += ", ";
+        }
     }
-    std::cout << std::endl;
-}
-void BNB::bestCostToString() const {
-    std::cout << "Best cost: " << bestRouteCost << std::endl;
+    bestRouteString += "]";
+    return bestRouteString;
 }
