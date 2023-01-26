@@ -34,7 +34,4 @@
 cmake-build-debug
 
 # Project specifics:
-jobs
-scripts
-queues
 .idea
