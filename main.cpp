@@ -14,6 +14,9 @@ int main(int argc, char *argv[]) {
     MPI_Comm_rank(MPI_COMM_WORLD, &myrank);
     if (myrank == 0) printf("Initialized the MPI environment with %d process%s.\n", npes, npes > 1 ? "es" : "");
 
+    // TIMER START:
+    double start = MPI_Wtime();
+
     // SETTINGS:
     std::string distFilename = argv[1];
 
@@ -54,9 +57,7 @@ int main(int argc, char *argv[]) {
             paths[i][j] = pathsVectors[myrank][i][j];       // Fill the paths with the data from the pathsVectors
         }
     }
-
-    // TIMER START:
-    double start = MPI_Wtime();
+    bnb.setBestRouteUsingUniformCostSearch(path[0]);    // Experimental: set the initial best route using Uniform Cost Search
 
     // MAIN JOB: COMPUTE THE SEARCH ON EACH PROCESS:
     for (int i = 0; i < amountOfPaths; i++) {   // For each path to be computed by the current process

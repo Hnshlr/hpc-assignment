@@ -168,6 +168,36 @@ std::vector<std::vector<std::vector<int>>> BNB::getFirstPathsV2(int npes, int st
     }
     return pathsPerProcess;
 }
+void BNB::setBestRouteUsingUniformCostSearch(int startingNode) {
+    // Choose the first best route by computing a Uniform Cost Search:
+    std::vector<int> route = std::vector<int>();
+    std::vector<bool> visited = std::vector<bool>(ncities, false);
+    int currentNode = startingNode;
+    while((int) route.size() < ncities) {
+        route.push_back(currentNode);
+        visited[currentNode] = true;
+        int nextNode = -1;
+        double minCost = std::numeric_limits<double>::max();
+        for(int i = 0; i < ncities; i++) {
+            if(!visited[i] && graph.getDistance(currentNode, i) < minCost) {
+                nextNode = i;
+                minCost = graph.getDistance(currentNode, i);
+            }
+        }
+        currentNode = nextNode;
+    }
+    route.push_back(startingNode);
+    // Compute the cost of the route:
+    double routeCost = 0;
+    for(int i = 0; i < ncities; i++) {
+        routeCost += graph.getDistance(route[i], route[i + 1]);
+    }
+    // Set the best route:
+    for (int i = 0; i < ncities; i++) {
+        bestRoute[i] = route[i];
+    }
+    bestRouteCost = (int) routeCost;
+}
 void BNB::search(int *path, int pathSize, int cost, int *visited) {
     // Base case: If the path is empty (ie. no city was selected to start with), test all cases for the first node:
     if (pathSize == 0) {
