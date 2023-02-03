@@ -16,6 +16,7 @@ int main(int argc, char *argv[]) {
 
     // TIMER START:
     double start = MPI_Wtime();
+    std::tuple<double, double> commTimes = {0, 0};
 
     // SETTINGS:
     std::string distFilename = argv[1];
@@ -43,6 +44,7 @@ int main(int argc, char *argv[]) {
 
     // BROADCAST THE STARTING NODE:
     MPI_Bcast(path, ncities, MPI_INT, 0, MPI_COMM_WORLD);
+
 
     // FIND EACH PROCESS' STARTING PATHS, DEPENDING ON THE AMOUNT OF PROCESSES AND THE RANK OF THE CURRENT PROCESS:
     std::vector<std::vector<std::vector<int>>> pathsVectors = bnb.getFirstPathsV2(npes, path[0]);
@@ -72,28 +74,43 @@ int main(int argc, char *argv[]) {
         // TODO: WORK/OPTIMISATION IN PROGRESS:
         if ((totalAmountOfPaths%npes) == 0 && i<(totalAmountOfPaths/npes)-1
         || (totalAmountOfPaths%npes) != 0 && i<(totalAmountOfPaths/npes)) {
-            bnb.searchMPI(path, amountOfNodesPerPath, cost, visited, myrank, npes);   // Compute the search
-            // and share results with the other processes after each path is fully computed.
+            // Compute the search and share results with the other processes after each path is fully computed:
+            std::tuple<double, double> temp = bnb.searchMPI(path, amountOfNodesPerPath, cost, visited, myrank, npes, start);
+            commTimes = {std::get<0>(commTimes) + std::get<0>(temp), std::get<1>(commTimes) + std::get<1>(temp)};
         } else {
-            bnb.search(path, amountOfNodesPerPath, cost, visited);  // Compute the search, but since it's the
-            // last path to be computed, don't share results with the other processes.
+            // Compute the search, but since it's the last path to be computed, don't share results with the other processes:
+            bnb.search(path, amountOfNodesPerPath, cost, visited);
         }
         // TODO: END OF WORK IN PROGRESS.
         for (int j = 0; j < amountOfNodesPerPath; j++) {
             visited[paths[i][j]] = 0;
         }
     }
+    // Measure the time spent in the last communication:
+    double in, lastIn, out;
     // Now that every process is out of the loop, the final sharing of results can occur:
     int bestCostAndRank[2] = {bnb.getBestRouteCost(), myrank};
+    in = MPI_Wtime() - start;
     MPI_Allreduce(MPI_IN_PLACE, bestCostAndRank, 1, MPI_2INT, MPI_MINLOC, MPI_COMM_WORLD);
     MPI_Bcast(bnb.getBestRoute(), ncities, MPI_INT, bestCostAndRank[1], MPI_COMM_WORLD);
+    out = MPI_Wtime() - start;
     bnb.setBestRouteCost(bestCostAndRank[0]);
+    // Gather the first and last communication times, to calculate the idle time:
+    MPI_Allreduce(MPI_IN_PLACE, &in, 1, MPI_DOUBLE, MPI_MIN, MPI_COMM_WORLD);
+    MPI_Allreduce(&in, &lastIn, 1, MPI_DOUBLE, MPI_MAX, MPI_COMM_WORLD);
+    MPI_Allreduce(MPI_IN_PLACE, &out, 1, MPI_DOUBLE, MPI_MIN, MPI_COMM_WORLD);
+    commTimes = {std::get<0>(commTimes) + out - in, std::get<1>(commTimes) + out - lastIn};
+    double idleTime = std::get<0>(commTimes);
+    double commTime = std::get<1>(commTimes);
+
 
     // MAKE THE PROCESS 0 ANNOUNCE THE BEST COST AND ROUTE:
     if (myrank == 0) {
         printf("PROCESS %d: The best route cost is: %d.\n", myrank, bnb.getBestRouteCost());
         printf("PROCESS %d: The best route is: %s\n", myrank, bnb.bestRouteToString().c_str());
-        printf("Total computation took: %f seconds.\n", ((int) ((MPI_Wtime() - start) * 10000) / 10000.0));
+        printf("Total computation took: %f seconds.\n", ((double) ((MPI_Wtime() - start) * 10000) / 10000.0));
+        printf("Total idling time: %f seconds.\n", ((double) ((idleTime) * 10000) / 10000.0));
+        printf("Total communication time: %f seconds.\n", ((double) ((commTime) * 10000) / 10000.0));
     }
 
     // FINALIZE THE MPI ENVIRONMENT:

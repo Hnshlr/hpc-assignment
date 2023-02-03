@@ -40,7 +40,7 @@ public:
     [[nodiscard]] std::vector<std::vector<std::vector<int>>> getFirstPathsV2(int npes, int startingNode) const;
     void setBestRouteUsingUniformCostSearch(int startingNode);
     void search(int *path, int pathSize, int cost, int *visited);
-    void searchMPI(int *path, int pathSize, int cost, int *visited, int myrank, int npes);
+    std::tuple<double, double> searchMPI(int *path, int pathSize, int cost, int *visited, int myrank, int npes, double start);
 
 
     // OTHERS:

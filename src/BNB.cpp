@@ -233,13 +233,23 @@ void BNB::search(int *path, int pathSize, int cost, int *visited) {
         }
     }
 }
-void BNB::searchMPI(int *path, int pathSize, int cost, int *visited, int myrank, int npes) {
+std::tuple<double, double> BNB::searchMPI(int *path, int pathSize, int cost, int *visited, int myrank, int npes, double start) {
     // TODO: WORK/OPTIMISATION IN PROGRESS:
     search(path, pathSize, cost, visited);
+    // Measure the time it takes to communicate the best route and cost:
+    double in, lastIn, out;
+    in = MPI_Wtime() - start;
+    // Communicate the best route and cost found so far:
     int bestCostAndRank[2] = {bestRouteCost, myrank};
     MPI_Allreduce(MPI_IN_PLACE, bestCostAndRank, 1, MPI_2INT, MPI_MINLOC, MPI_COMM_WORLD);
     MPI_Bcast(bestRoute, ncities, MPI_INT, bestCostAndRank[1], MPI_COMM_WORLD);
     bestRouteCost = bestCostAndRank[0];
+    out = MPI_Wtime() - start;
+    // Gather the first and last time of communication, to calculate the idle time:
+    MPI_Allreduce(&in, &lastIn, 1, MPI_DOUBLE, MPI_MAX, MPI_COMM_WORLD);
+    MPI_Allreduce(MPI_IN_PLACE, &in, 1, MPI_DOUBLE, MPI_MIN, MPI_COMM_WORLD);
+    MPI_Allreduce(MPI_IN_PLACE, &out, 1, MPI_DOUBLE, MPI_MIN, MPI_COMM_WORLD);
+    return std::make_tuple(out - in, out - lastIn > 0 ? out - lastIn : 0);
     // TODO: END OF WORK IN PROGRESS.
 }
 

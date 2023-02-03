@@ -1,0 +1,1088 @@
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 1 process.
+PROCESS 0: Selected starting node: 0
+PROCESS 0: The best route cost is: 278.
+PROCESS 0: The best route is: [0, 9, 3, 13, 14, 8, 5, 10, 12, 4, 7, 2, 15, 1, 16, 6, 11]
+Total computation took: 286.953034 seconds.
+Total idling time: 0.020161 seconds.
+Total communication time: 0.020161 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 2 processes.
+PROCESS 0: Selected starting node: 0
+PROCESS 0: The best route cost is: 278.
+PROCESS 0: The best route is: [0, 9, 3, 13, 14, 8, 5, 10, 12, 4, 7, 2, 15, 1, 16, 6, 11]
+Total computation took: 212.207022 seconds.
+Total idling time: 131.467629 seconds.
+Total communication time: 0.012885 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 4 processes.
+PROCESS 0: Selected starting node: 0
+PROCESS 0: The best route cost is: 278.
+PROCESS 0: The best route is: [0, 9, 3, 13, 14, 8, 5, 10, 12, 4, 7, 2, 15, 1, 16, 6, 11]
+Total computation took: 141.288716 seconds.
+Total idling time: 114.864076 seconds.
+Total communication time: 0.011678 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 8 processes.
+PROCESS 0: Selected starting node: 0
+PROCESS 0: The best route cost is: 278.
+PROCESS 0: The best route is: [0, 9, 3, 13, 14, 8, 5, 10, 12, 4, 7, 2, 15, 1, 16, 6, 11]
+Total computation took: 96.077226 seconds.
+Total idling time: 89.486719 seconds.
+Total communication time: 0.006682 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 16 processes.
+PROCESS 0: Selected starting node: 0
+PROCESS 0: The best route cost is: 278.
+PROCESS 0: The best route is: [0, 9, 3, 13, 14, 8, 5, 10, 12, 4, 7, 2, 15, 1, 16, 6, 11]
+Total computation took: 68.116013 seconds.
+Total idling time: 65.401757 seconds.
+Total communication time: 0.009343 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 32 processes.
+PROCESS 0: Selected starting node: 0
+PROCESS 0: The best route cost is: 278.
+PROCESS 0: The best route is: [0, 9, 3, 13, 14, 8, 5, 10, 12, 4, 7, 2, 15, 1, 16, 6, 11]
+Total computation took: 44.718007 seconds.
+Total idling time: 41.277832 seconds.
+Total communication time: 0.013565 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 48 processes.
+PROCESS 0: Selected starting node: 0
+PROCESS 0: The best route cost is: 278.
+PROCESS 0: The best route is: [0, 9, 3, 13, 14, 8, 5, 10, 12, 4, 7, 2, 15, 1, 16, 6, 11]
+Total computation took: 34.448953 seconds.
+Total idling time: 33.364057 seconds.
+Total communication time: 0.016218 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 64 processes.
+PROCESS 0: Selected starting node: 0
+PROCESS 0: The best route cost is: 278.
+PROCESS 0: The best route is: [0, 9, 3, 13, 14, 8, 5, 10, 12, 4, 7, 2, 15, 1, 16, 6, 11]
+Total computation took: 28.908170 seconds.
+Total idling time: 28.009370 seconds.
+Total communication time: 0.013789 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 1 process.
+PROCESS 0: Selected starting node: 1
+PROCESS 0: The best route cost is: 281.
+PROCESS 0: The best route is: [1, 15, 2, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9, 16, 6, 11]
+Total computation took: 162.501166 seconds.
+Total idling time: 0.020187 seconds.
+Total communication time: 0.020187 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 2 processes.
+PROCESS 0: Selected starting node: 1
+PROCESS 0: The best route cost is: 281.
+PROCESS 0: The best route is: [1, 15, 2, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9, 16, 6, 11]
+Total computation took: 122.021848 seconds.
+Total idling time: 74.632533 seconds.
+Total communication time: 0.014745 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 4 processes.
+PROCESS 0: Selected starting node: 1
+PROCESS 0: The best route cost is: 281.
+PROCESS 0: The best route is: [1, 15, 2, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9, 16, 6, 11]
+Total computation took: 81.706446 seconds.
+Total idling time: 64.616708 seconds.
+Total communication time: 0.015650 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 8 processes.
+PROCESS 0: Selected starting node: 1
+PROCESS 0: The best route cost is: 281.
+PROCESS 0: The best route is: [1, 15, 2, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9, 16, 6, 11]
+Total computation took: 55.583722 seconds.
+Total idling time: 51.736398 seconds.
+Total communication time: 0.011948 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 16 processes.
+PROCESS 0: Selected starting node: 1
+PROCESS 0: The best route cost is: 281.
+PROCESS 0: The best route is: [1, 15, 2, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9, 16, 6, 11]
+Total computation took: 39.609029 seconds.
+Total idling time: 37.204269 seconds.
+Total communication time: 0.011149 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 32 processes.
+PROCESS 0: Selected starting node: 1
+PROCESS 0: The best route cost is: 281.
+PROCESS 0: The best route is: [1, 15, 2, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9, 16, 6, 11]
+Total computation took: 26.083265 seconds.
+Total idling time: 22.626061 seconds.
+Total communication time: 0.023069 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 48 processes.
+PROCESS 0: Selected starting node: 1
+PROCESS 0: The best route cost is: 281.
+PROCESS 0: The best route is: [1, 15, 2, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9, 16, 6, 11]
+Total computation took: 20.459487 seconds.
+Total idling time: 19.253187 seconds.
+Total communication time: 0.027444 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 64 processes.
+PROCESS 0: Selected starting node: 1
+PROCESS 0: The best route cost is: 281.
+PROCESS 0: The best route is: [1, 15, 2, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9, 16, 6, 11]
+Total computation took: 16.987903 seconds.
+Total idling time: 15.278424 seconds.
+Total communication time: 0.020270 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 1 process.
+PROCESS 0: Selected starting node: 2
+PROCESS 0: The best route cost is: 267.
+PROCESS 0: The best route is: [2, 15, 1, 11, 6, 16, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 86.267190 seconds.
+Total idling time: 0.017106 seconds.
+Total communication time: 0.017106 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 2 processes.
+PROCESS 0: Selected starting node: 2
+PROCESS 0: The best route cost is: 267.
+PROCESS 0: The best route is: [2, 15, 1, 11, 6, 16, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 65.854368 seconds.
+Total idling time: 40.545348 seconds.
+Total communication time: 0.006289 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 4 processes.
+PROCESS 0: Selected starting node: 2
+PROCESS 0: The best route cost is: 267.
+PROCESS 0: The best route is: [2, 15, 1, 11, 6, 16, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 45.148167 seconds.
+Total idling time: 36.909988 seconds.
+Total communication time: 0.002746 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 8 processes.
+PROCESS 0: Selected starting node: 2
+PROCESS 0: The best route cost is: 267.
+PROCESS 0: The best route is: [2, 15, 1, 11, 6, 16, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 31.568107 seconds.
+Total idling time: 29.058808 seconds.
+Total communication time: 0.002158 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 16 processes.
+PROCESS 0: Selected starting node: 2
+PROCESS 0: The best route cost is: 267.
+PROCESS 0: The best route is: [2, 15, 1, 11, 6, 16, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 23.139994 seconds.
+Total idling time: 22.004378 seconds.
+Total communication time: 0.002575 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 32 processes.
+PROCESS 0: Selected starting node: 2
+PROCESS 0: The best route cost is: 267.
+PROCESS 0: The best route is: [2, 15, 1, 11, 6, 16, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 15.573574 seconds.
+Total idling time: 14.865125 seconds.
+Total communication time: 0.004863 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 48 processes.
+PROCESS 0: Selected starting node: 2
+PROCESS 0: The best route cost is: 267.
+PROCESS 0: The best route is: [2, 15, 1, 11, 6, 16, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 12.395374 seconds.
+Total idling time: 11.995725 seconds.
+Total communication time: 0.006300 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 64 processes.
+PROCESS 0: Selected starting node: 2
+PROCESS 0: The best route cost is: 267.
+PROCESS 0: The best route is: [2, 15, 1, 11, 6, 16, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 10.518770 seconds.
+Total idling time: 10.053773 seconds.
+Total communication time: 0.004994 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 1 process.
+PROCESS 0: Selected starting node: 3
+PROCESS 0: The best route cost is: 286.
+PROCESS 0: The best route is: [3, 13, 14, 8, 5, 10, 12, 4, 7, 2, 15, 1, 11, 6, 16, 0, 9]
+Total computation took: 258.103292 seconds.
+Total idling time: 0.019525 seconds.
+Total communication time: 0.019525 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 2 processes.
+PROCESS 0: Selected starting node: 3
+PROCESS 0: The best route cost is: 286.
+PROCESS 0: The best route is: [3, 13, 14, 8, 5, 10, 12, 4, 7, 2, 15, 1, 11, 6, 16, 0, 9]
+Total computation took: 189.622082 seconds.
+Total idling time: 114.544711 seconds.
+Total communication time: 0.012073 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 4 processes.
+PROCESS 0: Selected starting node: 3
+PROCESS 0: The best route cost is: 286.
+PROCESS 0: The best route is: [3, 13, 14, 8, 5, 10, 12, 4, 7, 2, 15, 1, 11, 6, 16, 0, 9]
+Total computation took: 126.361614 seconds.
+Total idling time: 103.764634 seconds.
+Total communication time: 0.006154 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 8 processes.
+PROCESS 0: Selected starting node: 3
+PROCESS 0: The best route cost is: 286.
+PROCESS 0: The best route is: [3, 13, 14, 8, 5, 10, 12, 4, 7, 2, 15, 1, 11, 6, 16, 0, 9]
+Total computation took: 85.020621 seconds.
+Total idling time: 78.148309 seconds.
+Total communication time: 0.004927 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 16 processes.
+PROCESS 0: Selected starting node: 3
+PROCESS 0: The best route cost is: 286.
+PROCESS 0: The best route is: [3, 13, 14, 8, 5, 10, 12, 4, 7, 2, 15, 1, 11, 6, 16, 0, 9]
+Total computation took: 61.348407 seconds.
+Total idling time: 58.504518 seconds.
+Total communication time: 0.005436 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 32 processes.
+PROCESS 0: Selected starting node: 3
+PROCESS 0: The best route cost is: 286.
+PROCESS 0: The best route is: [3, 13, 14, 8, 5, 10, 12, 4, 7, 2, 15, 1, 11, 6, 16, 0, 9]
+Total computation took: 40.482006 seconds.
+Total idling time: 37.628605 seconds.
+Total communication time: 0.007077 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 48 processes.
+PROCESS 0: Selected starting node: 3
+PROCESS 0: The best route cost is: 286.
+PROCESS 0: The best route is: [3, 13, 14, 8, 5, 10, 12, 4, 7, 2, 15, 1, 11, 6, 16, 0, 9]
+Total computation took: 31.516820 seconds.
+Total idling time: 30.006903 seconds.
+Total communication time: 0.010489 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 64 processes.
+PROCESS 0: Selected starting node: 3
+PROCESS 0: The best route cost is: 286.
+PROCESS 0: The best route is: [3, 13, 14, 8, 5, 10, 12, 4, 7, 2, 15, 1, 11, 6, 16, 0, 9]
+Total computation took: 25.963920 seconds.
+Total idling time: 24.824086 seconds.
+Total communication time: 0.009238 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 1 process.
+PROCESS 0: Selected starting node: 4
+PROCESS 0: The best route cost is: 290.
+PROCESS 0: The best route is: [4, 12, 10, 5, 8, 14, 13, 3, 0, 9, 16, 7, 2, 15, 1, 6, 11]
+Total computation took: 197.192560 seconds.
+Total idling time: 0.019182 seconds.
+Total communication time: 0.019182 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 2 processes.
+PROCESS 0: Selected starting node: 4
+PROCESS 0: The best route cost is: 290.
+PROCESS 0: The best route is: [4, 12, 10, 5, 8, 14, 13, 3, 0, 9, 16, 7, 2, 15, 1, 6, 11]
+Total computation took: 147.460397 seconds.
+Total idling time: 96.563917 seconds.
+Total communication time: 0.036883 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 4 processes.
+PROCESS 0: Selected starting node: 4
+PROCESS 0: The best route cost is: 290.
+PROCESS 0: The best route is: [4, 12, 10, 5, 8, 14, 13, 3, 0, 9, 16, 7, 2, 15, 1, 6, 11]
+Total computation took: 101.552982 seconds.
+Total idling time: 84.686737 seconds.
+Total communication time: 0.012705 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 8 processes.
+PROCESS 0: Selected starting node: 4
+PROCESS 0: The best route cost is: 290.
+PROCESS 0: The best route is: [4, 12, 10, 5, 8, 14, 13, 3, 0, 9, 16, 7, 2, 15, 1, 6, 11]
+Total computation took: 70.362875 seconds.
+Total idling time: 64.997820 seconds.
+Total communication time: 0.004637 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 16 processes.
+PROCESS 0: Selected starting node: 4
+PROCESS 0: The best route cost is: 290.
+PROCESS 0: The best route is: [4, 12, 10, 5, 8, 14, 13, 3, 0, 9, 16, 7, 2, 15, 1, 6, 11]
+Total computation took: 50.943860 seconds.
+Total idling time: 48.755169 seconds.
+Total communication time: 0.005415 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 32 processes.
+PROCESS 0: Selected starting node: 4
+PROCESS 0: The best route cost is: 290.
+PROCESS 0: The best route is: [4, 12, 10, 5, 8, 14, 13, 3, 0, 9, 16, 7, 2, 15, 1, 6, 11]
+Total computation took: 34.734301 seconds.
+Total idling time: 33.197991 seconds.
+Total communication time: 0.012081 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 48 processes.
+PROCESS 0: Selected starting node: 4
+PROCESS 0: The best route cost is: 290.
+PROCESS 0: The best route is: [4, 12, 10, 5, 8, 14, 13, 3, 0, 9, 16, 7, 2, 15, 1, 6, 11]
+Total computation took: 27.183094 seconds.
+Total idling time: 26.331738 seconds.
+Total communication time: 0.011850 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 64 processes.
+PROCESS 0: Selected starting node: 4
+PROCESS 0: The best route cost is: 290.
+PROCESS 0: The best route is: [4, 12, 10, 5, 8, 14, 13, 3, 0, 9, 16, 7, 2, 15, 1, 6, 11]
+Total computation took: 22.934261 seconds.
+Total idling time: 22.284965 seconds.
+Total communication time: 0.011484 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 1 process.
+PROCESS 0: Selected starting node: 5
+PROCESS 0: The best route cost is: 291.
+PROCESS 0: The best route is: [5, 8, 10, 12, 4, 7, 2, 15, 1, 11, 6, 16, 9, 0, 3, 13, 14]
+Total computation took: 212.088462 seconds.
+Total idling time: 0.020297 seconds.
+Total communication time: 0.020297 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 2 processes.
+PROCESS 0: Selected starting node: 5
+PROCESS 0: The best route cost is: 291.
+PROCESS 0: The best route is: [5, 8, 10, 12, 4, 7, 2, 15, 1, 11, 6, 16, 9, 0, 3, 13, 14]
+Total computation took: 157.422911 seconds.
+Total idling time: 98.325416 seconds.
+Total communication time: 0.011568 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 4 processes.
+PROCESS 0: Selected starting node: 5
+PROCESS 0: The best route cost is: 291.
+PROCESS 0: The best route is: [5, 8, 10, 12, 4, 7, 2, 15, 1, 11, 6, 16, 9, 0, 3, 13, 14]
+Total computation took: 107.959376 seconds.
+Total idling time: 88.034613 seconds.
+Total communication time: 0.004103 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 8 processes.
+PROCESS 0: Selected starting node: 5
+PROCESS 0: The best route cost is: 291.
+PROCESS 0: The best route is: [5, 8, 10, 12, 4, 7, 2, 15, 1, 11, 6, 16, 9, 0, 3, 13, 14]
+Total computation took: 74.807670 seconds.
+Total idling time: 69.189473 seconds.
+Total communication time: 0.003589 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 16 processes.
+PROCESS 0: Selected starting node: 5
+PROCESS 0: The best route cost is: 291.
+PROCESS 0: The best route is: [5, 8, 10, 12, 4, 7, 2, 15, 1, 11, 6, 16, 9, 0, 3, 13, 14]
+Total computation took: 54.022325 seconds.
+Total idling time: 50.261011 seconds.
+Total communication time: 0.002800 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 32 processes.
+PROCESS 0: Selected starting node: 5
+PROCESS 0: The best route cost is: 291.
+PROCESS 0: The best route is: [5, 8, 10, 12, 4, 7, 2, 15, 1, 11, 6, 16, 9, 0, 3, 13, 14]
+Total computation took: 36.612251 seconds.
+Total idling time: 35.653177 seconds.
+Total communication time: 0.008126 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 48 processes.
+PROCESS 0: Selected starting node: 5
+PROCESS 0: The best route cost is: 291.
+PROCESS 0: The best route is: [5, 8, 10, 12, 4, 7, 2, 15, 1, 11, 6, 16, 9, 0, 3, 13, 14]
+Total computation took: 28.620566 seconds.
+Total idling time: 26.914080 seconds.
+Total communication time: 0.008937 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 64 processes.
+PROCESS 0: Selected starting node: 5
+PROCESS 0: The best route cost is: 291.
+PROCESS 0: The best route is: [5, 8, 10, 12, 4, 7, 2, 15, 1, 11, 6, 16, 9, 0, 3, 13, 14]
+Total computation took: 24.520062 seconds.
+Total idling time: 23.819162 seconds.
+Total communication time: 0.007868 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 1 process.
+PROCESS 0: Selected starting node: 6
+PROCESS 0: The best route cost is: 283.
+PROCESS 0: The best route is: [6, 11, 2, 15, 1, 16, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 232.105586 seconds.
+Total idling time: 0.019443 seconds.
+Total communication time: 0.019443 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 2 processes.
+PROCESS 0: Selected starting node: 6
+PROCESS 0: The best route cost is: 283.
+PROCESS 0: The best route is: [6, 11, 2, 15, 1, 16, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 170.100113 seconds.
+Total idling time: 101.315078 seconds.
+Total communication time: 0.019436 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 4 processes.
+PROCESS 0: Selected starting node: 6
+PROCESS 0: The best route cost is: 283.
+PROCESS 0: The best route is: [6, 11, 2, 15, 1, 16, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 114.785743 seconds.
+Total idling time: 94.779261 seconds.
+Total communication time: 0.024672 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 8 processes.
+PROCESS 0: Selected starting node: 6
+PROCESS 0: The best route cost is: 283.
+PROCESS 0: The best route is: [6, 11, 2, 15, 1, 16, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 78.880408 seconds.
+Total idling time: 73.394751 seconds.
+Total communication time: 0.014306 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 16 processes.
+PROCESS 0: Selected starting node: 6
+PROCESS 0: The best route cost is: 283.
+PROCESS 0: The best route is: [6, 11, 2, 15, 1, 16, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 56.175641 seconds.
+Total idling time: 54.812173 seconds.
+Total communication time: 0.016453 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 32 processes.
+PROCESS 0: Selected starting node: 6
+PROCESS 0: The best route cost is: 283.
+PROCESS 0: The best route is: [6, 11, 2, 15, 1, 16, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 37.820141 seconds.
+Total idling time: 35.940382 seconds.
+Total communication time: 0.031627 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 48 processes.
+PROCESS 0: Selected starting node: 6
+PROCESS 0: The best route cost is: 283.
+PROCESS 0: The best route is: [6, 11, 2, 15, 1, 16, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 29.157884 seconds.
+Total idling time: 28.442286 seconds.
+Total communication time: 0.040732 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 64 processes.
+PROCESS 0: Selected starting node: 6
+PROCESS 0: The best route cost is: 283.
+PROCESS 0: The best route is: [6, 11, 2, 15, 1, 16, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 25.041776 seconds.
+Total idling time: 23.963345 seconds.
+Total communication time: 0.034897 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 1 process.
+PROCESS 0: Selected starting node: 7
+PROCESS 0: The best route cost is: 285.
+PROCESS 0: The best route is: [7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9, 16, 6, 11, 1, 15, 2]
+Total computation took: 128.028899 seconds.
+Total idling time: 0.018542 seconds.
+Total communication time: 0.018542 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 2 processes.
+PROCESS 0: Selected starting node: 7
+PROCESS 0: The best route cost is: 285.
+PROCESS 0: The best route is: [7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9, 16, 6, 11, 1, 15, 2]
+Total computation took: 97.427176 seconds.
+Total idling time: 61.069867 seconds.
+Total communication time: 0.011581 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 4 processes.
+PROCESS 0: Selected starting node: 7
+PROCESS 0: The best route cost is: 285.
+PROCESS 0: The best route is: [7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9, 16, 6, 11, 1, 15, 2]
+Total computation took: 67.357814 seconds.
+Total idling time: 56.829800 seconds.
+Total communication time: 0.008157 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 8 processes.
+PROCESS 0: Selected starting node: 7
+PROCESS 0: The best route cost is: 285.
+PROCESS 0: The best route is: [7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9, 16, 6, 11, 1, 15, 2]
+Total computation took: 47.409370 seconds.
+Total idling time: 43.550840 seconds.
+Total communication time: 0.008588 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 16 processes.
+PROCESS 0: Selected starting node: 7
+PROCESS 0: The best route cost is: 285.
+PROCESS 0: The best route is: [7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9, 16, 6, 11, 1, 15, 2]
+Total computation took: 34.715171 seconds.
+Total idling time: 32.535314 seconds.
+Total communication time: 0.006947 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 32 processes.
+PROCESS 0: Selected starting node: 7
+PROCESS 0: The best route cost is: 285.
+PROCESS 0: The best route is: [7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9, 16, 6, 11, 1, 15, 2]
+Total computation took: 23.975853 seconds.
+Total idling time: 22.277269 seconds.
+Total communication time: 0.014400 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 48 processes.
+PROCESS 0: Selected starting node: 7
+PROCESS 0: The best route cost is: 285.
+PROCESS 0: The best route is: [7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9, 16, 6, 11, 1, 15, 2]
+Total computation took: 18.650894 seconds.
+Total idling time: 17.653177 seconds.
+Total communication time: 0.019278 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 64 processes.
+PROCESS 0: Selected starting node: 7
+PROCESS 0: The best route cost is: 285.
+PROCESS 0: The best route is: [7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9, 16, 6, 11, 1, 15, 2]
+Total computation took: 16.113365 seconds.
+Total idling time: 14.768191 seconds.
+Total communication time: 0.015710 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 1 process.
+PROCESS 0: Selected starting node: 8
+PROCESS 0: The best route cost is: 287.
+PROCESS 0: The best route is: [8, 5, 10, 12, 4, 7, 2, 15, 1, 11, 6, 16, 9, 0, 3, 13, 14]
+Total computation took: 224.137883 seconds.
+Total idling time: 0.019024 seconds.
+Total communication time: 0.019024 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 2 processes.
+PROCESS 0: Selected starting node: 8
+PROCESS 0: The best route cost is: 287.
+PROCESS 0: The best route is: [8, 5, 10, 12, 4, 7, 2, 15, 1, 11, 6, 16, 9, 0, 3, 13, 14]
+Total computation took: 166.140192 seconds.
+Total idling time: 104.708944 seconds.
+Total communication time: 0.012009 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 4 processes.
+PROCESS 0: Selected starting node: 8
+PROCESS 0: The best route cost is: 287.
+PROCESS 0: The best route is: [8, 5, 10, 12, 4, 7, 2, 15, 1, 11, 6, 16, 9, 0, 3, 13, 14]
+Total computation took: 113.832336 seconds.
+Total idling time: 96.083572 seconds.
+Total communication time: 0.004631 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 8 processes.
+PROCESS 0: Selected starting node: 8
+PROCESS 0: The best route cost is: 287.
+PROCESS 0: The best route is: [8, 5, 10, 12, 4, 7, 2, 15, 1, 11, 6, 16, 9, 0, 3, 13, 14]
+Total computation took: 78.461126 seconds.
+Total idling time: 72.708887 seconds.
+Total communication time: 0.004874 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 16 processes.
+PROCESS 0: Selected starting node: 8
+PROCESS 0: The best route cost is: 287.
+PROCESS 0: The best route is: [8, 5, 10, 12, 4, 7, 2, 15, 1, 11, 6, 16, 9, 0, 3, 13, 14]
+Total computation took: 55.953889 seconds.
+Total idling time: 53.459326 seconds.
+Total communication time: 0.002505 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 32 processes.
+PROCESS 0: Selected starting node: 8
+PROCESS 0: The best route cost is: 287.
+PROCESS 0: The best route is: [8, 5, 10, 12, 4, 7, 2, 15, 1, 11, 6, 16, 9, 0, 3, 13, 14]
+Total computation took: 37.917478 seconds.
+Total idling time: 34.371709 seconds.
+Total communication time: 0.005170 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 48 processes.
+PROCESS 0: Selected starting node: 8
+PROCESS 0: The best route cost is: 287.
+PROCESS 0: The best route is: [8, 5, 10, 12, 4, 7, 2, 15, 1, 11, 6, 16, 9, 0, 3, 13, 14]
+Total computation took: 29.976304 seconds.
+Total idling time: 27.959859 seconds.
+Total communication time: 0.006333 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 64 processes.
+PROCESS 0: Selected starting node: 8
+PROCESS 0: The best route cost is: 287.
+PROCESS 0: The best route is: [8, 5, 10, 12, 4, 7, 2, 15, 1, 11, 6, 16, 9, 0, 3, 13, 14]
+Total computation took: 25.636227 seconds.
+Total idling time: 24.196644 seconds.
+Total communication time: 0.005691 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 1 process.
+PROCESS 0: Selected starting node: 9
+PROCESS 0: The best route cost is: 260.
+PROCESS 0: The best route is: [9, 0, 3, 13, 14, 8, 5, 10, 12, 4, 7, 2, 15, 1, 16, 6, 11]
+Total computation took: 45.568492 seconds.
+Total idling time: 0.015447 seconds.
+Total communication time: 0.015447 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 2 processes.
+PROCESS 0: Selected starting node: 9
+PROCESS 0: The best route cost is: 260.
+PROCESS 0: The best route is: [9, 0, 3, 13, 14, 8, 5, 10, 12, 4, 7, 2, 15, 1, 16, 6, 11]
+Total computation took: 33.691869 seconds.
+Total idling time: 18.685373 seconds.
+Total communication time: 0.004487 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 4 processes.
+PROCESS 0: Selected starting node: 9
+PROCESS 0: The best route cost is: 260.
+PROCESS 0: The best route is: [9, 0, 3, 13, 14, 8, 5, 10, 12, 4, 7, 2, 15, 1, 16, 6, 11]
+Total computation took: 23.100322 seconds.
+Total idling time: 18.292181 seconds.
+Total communication time: 0.002279 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 8 processes.
+PROCESS 0: Selected starting node: 9
+PROCESS 0: The best route cost is: 260.
+PROCESS 0: The best route is: [9, 0, 3, 13, 14, 8, 5, 10, 12, 4, 7, 2, 15, 1, 16, 6, 11]
+Total computation took: 16.295546 seconds.
+Total idling time: 14.347800 seconds.
+Total communication time: 0.001614 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 16 processes.
+PROCESS 0: Selected starting node: 9
+PROCESS 0: The best route cost is: 260.
+PROCESS 0: The best route is: [9, 0, 3, 13, 14, 8, 5, 10, 12, 4, 7, 2, 15, 1, 16, 6, 11]
+Total computation took: 11.895799 seconds.
+Total idling time: 10.826895 seconds.
+Total communication time: 0.002374 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 32 processes.
+PROCESS 0: Selected starting node: 9
+PROCESS 0: The best route cost is: 260.
+PROCESS 0: The best route is: [9, 0, 3, 13, 14, 8, 5, 10, 12, 4, 7, 2, 15, 1, 16, 6, 11]
+Total computation took: 8.822114 seconds.
+Total idling time: 7.696776 seconds.
+Total communication time: 0.005720 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 48 processes.
+PROCESS 0: Selected starting node: 9
+PROCESS 0: The best route cost is: 260.
+PROCESS 0: The best route is: [9, 0, 3, 13, 14, 8, 5, 10, 12, 4, 7, 2, 15, 1, 16, 6, 11]
+Total computation took: 7.088335 seconds.
+Total idling time: 6.468900 seconds.
+Total communication time: 0.007075 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 64 processes.
+PROCESS 0: Selected starting node: 9
+PROCESS 0: The best route cost is: 260.
+PROCESS 0: The best route is: [9, 0, 3, 13, 14, 8, 5, 10, 12, 4, 7, 2, 15, 1, 16, 6, 11]
+Total computation took: 6.537910 seconds.
+Total idling time: 6.045779 seconds.
+Total communication time: 0.005137 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 1 process.
+PROCESS 0: Selected starting node: 10
+PROCESS 0: The best route cost is: 290.
+PROCESS 0: The best route is: [10, 5, 8, 14, 13, 3, 0, 9, 16, 7, 4, 12, 2, 15, 1, 6, 11]
+Total computation took: 215.061807 seconds.
+Total idling time: 0.020153 seconds.
+Total communication time: 0.020153 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 2 processes.
+PROCESS 0: Selected starting node: 10
+PROCESS 0: The best route cost is: 290.
+PROCESS 0: The best route is: [10, 5, 8, 14, 13, 3, 0, 9, 16, 7, 4, 12, 2, 15, 1, 6, 11]
+Total computation took: 154.959775 seconds.
+Total idling time: 89.720506 seconds.
+Total communication time: 0.011003 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 4 processes.
+PROCESS 0: Selected starting node: 10
+PROCESS 0: The best route cost is: 290.
+PROCESS 0: The best route is: [10, 5, 8, 14, 13, 3, 0, 9, 16, 7, 4, 12, 2, 15, 1, 6, 11]
+Total computation took: 109.211811 seconds.
+Total idling time: 88.797127 seconds.
+Total communication time: 0.009188 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 8 processes.
+PROCESS 0: Selected starting node: 10
+PROCESS 0: The best route cost is: 290.
+PROCESS 0: The best route is: [10, 5, 8, 14, 13, 3, 0, 9, 16, 7, 4, 12, 2, 15, 1, 6, 11]
+Total computation took: 75.182632 seconds.
+Total idling time: 67.896519 seconds.
+Total communication time: 0.004731 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 16 processes.
+PROCESS 0: Selected starting node: 10
+PROCESS 0: The best route cost is: 290.
+PROCESS 0: The best route is: [10, 5, 8, 14, 13, 3, 0, 9, 16, 7, 4, 12, 2, 15, 1, 6, 11]
+Total computation took: 53.460360 seconds.
+Total idling time: 50.879430 seconds.
+Total communication time: 0.006930 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 32 processes.
+PROCESS 0: Selected starting node: 10
+PROCESS 0: The best route cost is: 290.
+PROCESS 0: The best route is: [10, 5, 8, 14, 13, 3, 0, 9, 16, 7, 4, 12, 2, 15, 1, 6, 11]
+Total computation took: 36.725646 seconds.
+Total idling time: 34.332096 seconds.
+Total communication time: 0.005249 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 48 processes.
+PROCESS 0: Selected starting node: 10
+PROCESS 0: The best route cost is: 290.
+PROCESS 0: The best route is: [10, 5, 8, 14, 13, 3, 0, 9, 16, 7, 4, 12, 2, 15, 1, 6, 11]
+Total computation took: 28.698302 seconds.
+Total idling time: 27.846162 seconds.
+Total communication time: 0.009185 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 64 processes.
+PROCESS 0: Selected starting node: 10
+PROCESS 0: The best route cost is: 290.
+PROCESS 0: The best route is: [10, 5, 8, 14, 13, 3, 0, 9, 16, 7, 4, 12, 2, 15, 1, 6, 11]
+Total computation took: 24.614354 seconds.
+Total idling time: 22.850799 seconds.
+Total communication time: 0.005925 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 1 process.
+PROCESS 0: Selected starting node: 11
+PROCESS 0: The best route cost is: 260.
+PROCESS 0: The best route is: [11, 6, 16, 1, 15, 2, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 65.335748 seconds.
+Total idling time: 0.016545 seconds.
+Total communication time: 0.016545 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 2 processes.
+PROCESS 0: Selected starting node: 11
+PROCESS 0: The best route cost is: 260.
+PROCESS 0: The best route is: [11, 6, 16, 1, 15, 2, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 48.281386 seconds.
+Total idling time: 27.625493 seconds.
+Total communication time: 0.004293 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 4 processes.
+PROCESS 0: Selected starting node: 11
+PROCESS 0: The best route cost is: 260.
+PROCESS 0: The best route is: [11, 6, 16, 1, 15, 2, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 33.886826 seconds.
+Total idling time: 27.452305 seconds.
+Total communication time: 0.002342 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 8 processes.
+PROCESS 0: Selected starting node: 11
+PROCESS 0: The best route cost is: 260.
+PROCESS 0: The best route is: [11, 6, 16, 1, 15, 2, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 23.706842 seconds.
+Total idling time: 21.385476 seconds.
+Total communication time: 0.001984 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 16 processes.
+PROCESS 0: Selected starting node: 11
+PROCESS 0: The best route cost is: 260.
+PROCESS 0: The best route is: [11, 6, 16, 1, 15, 2, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 17.311947 seconds.
+Total idling time: 16.488189 seconds.
+Total communication time: 0.001259 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 32 processes.
+PROCESS 0: Selected starting node: 11
+PROCESS 0: The best route cost is: 260.
+PROCESS 0: The best route is: [11, 6, 16, 1, 15, 2, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 11.946288 seconds.
+Total idling time: 11.099509 seconds.
+Total communication time: 0.004176 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 48 processes.
+PROCESS 0: Selected starting node: 11
+PROCESS 0: The best route cost is: 260.
+PROCESS 0: The best route is: [11, 6, 16, 1, 15, 2, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 9.456471 seconds.
+Total idling time: 8.966199 seconds.
+Total communication time: 0.005204 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 64 processes.
+PROCESS 0: Selected starting node: 11
+PROCESS 0: The best route cost is: 260.
+PROCESS 0: The best route is: [11, 6, 16, 1, 15, 2, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 8.295497 seconds.
+Total idling time: 8.080246 seconds.
+Total communication time: 0.004189 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 1 process.
+PROCESS 0: Selected starting node: 12
+PROCESS 0: The best route cost is: 293.
+PROCESS 0: The best route is: [12, 4, 7, 16, 6, 11, 1, 15, 2, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 209.920145 seconds.
+Total idling time: 0.019593 seconds.
+Total communication time: 0.019593 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 2 processes.
+PROCESS 0: Selected starting node: 12
+PROCESS 0: The best route cost is: 293.
+PROCESS 0: The best route is: [12, 4, 7, 16, 6, 11, 1, 15, 2, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 154.635805 seconds.
+Total idling time: 92.157254 seconds.
+Total communication time: 0.011547 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 4 processes.
+PROCESS 0: Selected starting node: 12
+PROCESS 0: The best route cost is: 293.
+PROCESS 0: The best route is: [12, 4, 7, 16, 6, 11, 1, 15, 2, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 106.391783 seconds.
+Total idling time: 87.365613 seconds.
+Total communication time: 0.006172 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 8 processes.
+PROCESS 0: Selected starting node: 12
+PROCESS 0: The best route cost is: 293.
+PROCESS 0: The best route is: [12, 4, 7, 16, 6, 11, 1, 15, 2, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 73.895877 seconds.
+Total idling time: 67.108347 seconds.
+Total communication time: 0.006309 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 16 processes.
+PROCESS 0: Selected starting node: 12
+PROCESS 0: The best route cost is: 293.
+PROCESS 0: The best route is: [12, 4, 7, 16, 6, 11, 1, 15, 2, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 53.244957 seconds.
+Total idling time: 50.857434 seconds.
+Total communication time: 0.012302 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 32 processes.
+PROCESS 0: Selected starting node: 12
+PROCESS 0: The best route cost is: 293.
+PROCESS 0: The best route is: [12, 4, 7, 16, 6, 11, 1, 15, 2, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 36.184645 seconds.
+Total idling time: 34.758001 seconds.
+Total communication time: 0.004570 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 48 processes.
+PROCESS 0: Selected starting node: 12
+PROCESS 0: The best route cost is: 293.
+PROCESS 0: The best route is: [12, 4, 7, 16, 6, 11, 1, 15, 2, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 28.135995 seconds.
+Total idling time: 26.956887 seconds.
+Total communication time: 0.008743 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 64 processes.
+PROCESS 0: Selected starting node: 12
+PROCESS 0: The best route cost is: 293.
+PROCESS 0: The best route is: [12, 4, 7, 16, 6, 11, 1, 15, 2, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 24.011888 seconds.
+Total idling time: 23.137081 seconds.
+Total communication time: 0.003674 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 1 process.
+PROCESS 0: Selected starting node: 13
+PROCESS 0: The best route cost is: 291.
+PROCESS 0: The best route is: [13, 14, 3, 0, 9, 16, 7, 4, 5, 8, 10, 12, 2, 15, 1, 6, 11]
+Total computation took: 261.151634 seconds.
+Total idling time: 0.019825 seconds.
+Total communication time: 0.019825 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 2 processes.
+PROCESS 0: Selected starting node: 13
+PROCESS 0: The best route cost is: 291.
+PROCESS 0: The best route is: [13, 14, 3, 0, 9, 16, 7, 4, 5, 8, 10, 12, 2, 15, 1, 6, 11]
+Total computation took: 191.453947 seconds.
+Total idling time: 115.929620 seconds.
+Total communication time: 0.010231 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 4 processes.
+PROCESS 0: Selected starting node: 13
+PROCESS 0: The best route cost is: 291.
+PROCESS 0: The best route is: [13, 14, 3, 0, 9, 16, 7, 4, 5, 8, 10, 12, 2, 15, 1, 6, 11]
+Total computation took: 125.801278 seconds.
+Total idling time: 101.742109 seconds.
+Total communication time: 0.003234 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 8 processes.
+PROCESS 0: Selected starting node: 13
+PROCESS 0: The best route cost is: 291.
+PROCESS 0: The best route is: [13, 14, 3, 0, 9, 16, 7, 4, 5, 8, 10, 12, 2, 15, 1, 6, 11]
+Total computation took: 84.680563 seconds.
+Total idling time: 76.918719 seconds.
+Total communication time: 0.003565 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 16 processes.
+PROCESS 0: Selected starting node: 13
+PROCESS 0: The best route cost is: 291.
+PROCESS 0: The best route is: [13, 14, 3, 0, 9, 16, 7, 4, 5, 8, 10, 12, 2, 15, 1, 6, 11]
+Total computation took: 60.872488 seconds.
+Total idling time: 57.437345 seconds.
+Total communication time: 0.008836 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 32 processes.
+PROCESS 0: Selected starting node: 13
+PROCESS 0: The best route cost is: 291.
+PROCESS 0: The best route is: [13, 14, 3, 0, 9, 16, 7, 4, 5, 8, 10, 12, 2, 15, 1, 6, 11]
+Total computation took: 40.094912 seconds.
+Total idling time: 38.239247 seconds.
+Total communication time: 0.010778 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 48 processes.
+PROCESS 0: Selected starting node: 13
+PROCESS 0: The best route cost is: 291.
+PROCESS 0: The best route is: [13, 14, 3, 0, 9, 16, 7, 4, 5, 8, 10, 12, 2, 15, 1, 6, 11]
+Total computation took: 30.855255 seconds.
+Total idling time: 29.277921 seconds.
+Total communication time: 0.009608 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 64 processes.
+PROCESS 0: Selected starting node: 13
+PROCESS 0: The best route cost is: 291.
+PROCESS 0: The best route is: [13, 14, 3, 0, 9, 16, 7, 4, 5, 8, 10, 12, 2, 15, 1, 6, 11]
+Total computation took: 26.186320 seconds.
+Total idling time: 24.988378 seconds.
+Total communication time: 0.009117 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 1 process.
+PROCESS 0: Selected starting node: 14
+PROCESS 0: The best route cost is: 282.
+PROCESS 0: The best route is: [14, 13, 3, 0, 9, 16, 7, 4, 5, 8, 10, 12, 2, 15, 1, 6, 11]
+Total computation took: 257.345256 seconds.
+Total idling time: 0.019676 seconds.
+Total communication time: 0.019676 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 2 processes.
+PROCESS 0: Selected starting node: 14
+PROCESS 0: The best route cost is: 282.
+PROCESS 0: The best route is: [14, 13, 3, 0, 9, 16, 7, 4, 5, 8, 10, 12, 2, 15, 1, 6, 11]
+Total computation took: 189.360365 seconds.
+Total idling time: 114.737635 seconds.
+Total communication time: 0.009874 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 4 processes.
+PROCESS 0: Selected starting node: 14
+PROCESS 0: The best route cost is: 282.
+PROCESS 0: The best route is: [14, 13, 3, 0, 9, 16, 7, 4, 5, 8, 10, 12, 2, 15, 1, 6, 11]
+Total computation took: 125.448947 seconds.
+Total idling time: 102.061308 seconds.
+Total communication time: 0.010808 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 8 processes.
+PROCESS 0: Selected starting node: 14
+PROCESS 0: The best route cost is: 282.
+PROCESS 0: The best route is: [14, 13, 3, 0, 9, 16, 7, 4, 5, 8, 10, 12, 2, 15, 1, 6, 11]
+Total computation took: 84.819455 seconds.
+Total idling time: 78.276075 seconds.
+Total communication time: 0.002144 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 16 processes.
+PROCESS 0: Selected starting node: 14
+PROCESS 0: The best route cost is: 282.
+PROCESS 0: The best route is: [14, 13, 3, 0, 9, 16, 7, 4, 5, 8, 10, 12, 2, 15, 1, 6, 11]
+Total computation took: 60.844332 seconds.
+Total idling time: 57.724895 seconds.
+Total communication time: 0.006000 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 32 processes.
+PROCESS 0: Selected starting node: 14
+PROCESS 0: The best route cost is: 282.
+PROCESS 0: The best route is: [14, 13, 3, 0, 9, 16, 7, 4, 5, 8, 10, 12, 2, 15, 1, 6, 11]
+Total computation took: 40.132466 seconds.
+Total idling time: 35.741170 seconds.
+Total communication time: 0.004610 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 48 processes.
+PROCESS 0: Selected starting node: 14
+PROCESS 0: The best route cost is: 282.
+PROCESS 0: The best route is: [14, 13, 3, 0, 9, 16, 7, 4, 5, 8, 10, 12, 2, 15, 1, 6, 11]
+Total computation took: 31.124863 seconds.
+Total idling time: 28.754067 seconds.
+Total communication time: 0.003744 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 64 processes.
+PROCESS 0: Selected starting node: 14
+PROCESS 0: The best route cost is: 282.
+PROCESS 0: The best route is: [14, 13, 3, 0, 9, 16, 7, 4, 5, 8, 10, 12, 2, 15, 1, 6, 11]
+Total computation took: 26.343383 seconds.
+Total idling time: 25.168090 seconds.
+Total communication time: 0.004492 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 1 process.
+PROCESS 0: Selected starting node: 15
+PROCESS 0: The best route cost is: 284.
+PROCESS 0: The best route is: [15, 1, 2, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9, 16, 6, 11]
+Total computation took: 147.554862 seconds.
+Total idling time: 0.019710 seconds.
+Total communication time: 0.019710 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 2 processes.
+PROCESS 0: Selected starting node: 15
+PROCESS 0: The best route cost is: 284.
+PROCESS 0: The best route is: [15, 1, 2, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9, 16, 6, 11]
+Total computation took: 110.498113 seconds.
+Total idling time: 68.623428 seconds.
+Total communication time: 0.013460 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 4 processes.
+PROCESS 0: Selected starting node: 15
+PROCESS 0: The best route cost is: 284.
+PROCESS 0: The best route is: [15, 1, 2, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9, 16, 6, 11]
+Total computation took: 74.019497 seconds.
+Total idling time: 61.978602 seconds.
+Total communication time: 0.008967 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 8 processes.
+PROCESS 0: Selected starting node: 15
+PROCESS 0: The best route cost is: 284.
+PROCESS 0: The best route is: [15, 1, 2, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9, 16, 6, 11]
+Total computation took: 50.523191 seconds.
+Total idling time: 47.177859 seconds.
+Total communication time: 0.011818 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 16 processes.
+PROCESS 0: Selected starting node: 15
+PROCESS 0: The best route cost is: 284.
+PROCESS 0: The best route is: [15, 1, 2, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9, 16, 6, 11]
+Total computation took: 36.105042 seconds.
+Total idling time: 34.862117 seconds.
+Total communication time: 0.031022 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 32 processes.
+PROCESS 0: Selected starting node: 15
+PROCESS 0: The best route cost is: 284.
+PROCESS 0: The best route is: [15, 1, 2, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9, 16, 6, 11]
+Total computation took: 23.785383 seconds.
+Total idling time: 22.580030 seconds.
+Total communication time: 0.030254 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 48 processes.
+PROCESS 0: Selected starting node: 15
+PROCESS 0: The best route cost is: 284.
+PROCESS 0: The best route is: [15, 1, 2, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9, 16, 6, 11]
+Total computation took: 18.921418 seconds.
+Total idling time: 18.264320 seconds.
+Total communication time: 0.030476 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 64 processes.
+PROCESS 0: Selected starting node: 15
+PROCESS 0: The best route cost is: 284.
+PROCESS 0: The best route is: [15, 1, 2, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9, 16, 6, 11]
+Total computation took: 15.627782 seconds.
+Total idling time: 14.667207 seconds.
+Total communication time: 0.029576 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 1 process.
+PROCESS 0: Selected starting node: 16
+PROCESS 0: The best route cost is: 276.
+PROCESS 0: The best route is: [16, 6, 11, 1, 15, 2, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 135.409321 seconds.
+Total idling time: 0.018576 seconds.
+Total communication time: 0.018576 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 2 processes.
+PROCESS 0: Selected starting node: 16
+PROCESS 0: The best route cost is: 276.
+PROCESS 0: The best route is: [16, 6, 11, 1, 15, 2, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 102.279968 seconds.
+Total idling time: 63.439219 seconds.
+Total communication time: 0.009237 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 4 processes.
+PROCESS 0: Selected starting node: 16
+PROCESS 0: The best route cost is: 276.
+PROCESS 0: The best route is: [16, 6, 11, 1, 15, 2, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 68.861577 seconds.
+Total idling time: 56.956215 seconds.
+Total communication time: 0.004307 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 8 processes.
+PROCESS 0: Selected starting node: 16
+PROCESS 0: The best route cost is: 276.
+PROCESS 0: The best route is: [16, 6, 11, 1, 15, 2, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 47.393558 seconds.
+Total idling time: 43.210307 seconds.
+Total communication time: 0.005459 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 16 processes.
+PROCESS 0: Selected starting node: 16
+PROCESS 0: The best route cost is: 276.
+PROCESS 0: The best route is: [16, 6, 11, 1, 15, 2, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 34.820949 seconds.
+Total idling time: 32.738895 seconds.
+Total communication time: 0.012819 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 32 processes.
+PROCESS 0: Selected starting node: 16
+PROCESS 0: The best route cost is: 276.
+PROCESS 0: The best route is: [16, 6, 11, 1, 15, 2, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 23.285808 seconds.
+Total idling time: 22.299412 seconds.
+Total communication time: 0.013715 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 48 processes.
+PROCESS 0: Selected starting node: 16
+PROCESS 0: The best route cost is: 276.
+PROCESS 0: The best route is: [16, 6, 11, 1, 15, 2, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 18.582478 seconds.
+Total idling time: 16.908952 seconds.
+Total communication time: 0.011149 seconds.
+WARNING: release_mt library was used but no multi-ep feature was enabled. Please use release library instead.
+Initialized the MPI environment with 64 processes.
+PROCESS 0: Selected starting node: 16
+PROCESS 0: The best route cost is: 276.
+PROCESS 0: The best route is: [16, 6, 11, 1, 15, 2, 7, 4, 12, 10, 5, 8, 14, 13, 3, 0, 9]
+Total computation took: 15.644887 seconds.
+Total idling time: 14.999871 seconds.
+Total communication time: 0.013744 seconds.
