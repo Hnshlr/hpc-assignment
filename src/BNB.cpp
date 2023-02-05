@@ -34,6 +34,7 @@ const Graph &BNB::getGraph() const {
 
 // ADV. METHODS:
 std::vector<std::vector<std::vector<int>>> BNB::getFirstPaths(int npes, int startingNode) const {
+    // GENERATE ALL POSSIBLE PATHS AND DISTRIBUTE THEM BETWEEN PROCESSES, CONSIDERING THE STARTING NODE AND THE NUMBER OF PROCESSES:
     if(npes < ncities) {
         // Generate all possible paths, considering the starting node:
         std::vector<std::vector<int>> paths;
@@ -112,9 +113,10 @@ std::vector<std::vector<std::vector<int>>> BNB::getFirstPaths(int npes, int star
     }
 }
 std::vector<std::vector<std::vector<int>>> BNB::getFirstPathsV2(int npes, int startingNode) const {
-    // Find the depth of the tree, so that there are more paths than processes (considering the starting node):
+    // EXPERIMENTAL: GENERATE ALL POSSIBLE PATHS AND DISTRIBUTE THEM BETWEEN PROCESSES, REGARDLESS OF THE NUMBER OF PROCESSES:
     int depth = 1;
     int pathsCount = 1;
+    // Find the depth of the tree, so that there are more paths than processes and the depth is at least 5:
     while(pathsCount < npes || depth != 5) {    // 5 is an arbitrary selected depth, following various tests.
         pathsCount *= ncities - depth;
         depth++;
@@ -169,10 +171,11 @@ std::vector<std::vector<std::vector<int>>> BNB::getFirstPathsV2(int npes, int st
     return pathsPerProcess;
 }
 void BNB::setBestRouteUsingUniformCostSearch(int startingNode) {
-    // Choose the first best route by computing a Uniform Cost Search:
+    // EXPERIMENTAL: USE UNIFORM COST SEARCH ONCE AND RETURN THE BEST ROUTE:
     std::vector<int> route = std::vector<int>();
     std::vector<bool> visited = std::vector<bool>(ncities, false);
     int currentNode = startingNode;
+    // While there are still nodes to visit:
     while((int) route.size() < ncities) {
         route.push_back(currentNode);
         visited[currentNode] = true;
@@ -187,15 +190,10 @@ void BNB::setBestRouteUsingUniformCostSearch(int startingNode) {
         currentNode = nextNode;
     }
     route.push_back(startingNode);
-    // Compute the cost of the route:
+    // Update the best route and best cost:
     double routeCost = 0;
-    for(int i = 0; i < ncities; i++) {
-        routeCost += graph.getDistance(route[i], route[i + 1]);
-    }
-    // Set the best route:
-    for (int i = 0; i < ncities; i++) {
-        bestRoute[i] = route[i];
-    }
+    for(int i = 0; i < ncities; i++) routeCost += graph.getDistance(route[i], route[i + 1]);
+    for (int i = 0; i < ncities; i++) bestRoute[i] = route[i];
     bestRouteCost = (int) routeCost;
 }
 void BNB::search(int *path, int pathSize, int cost, int *visited) {

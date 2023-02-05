@@ -27,18 +27,18 @@ int main(int argc, char *argv[]) {
     int ncities = bnb.getNcities();
 
     // PREFERENCES:
-    int path[ncities];              // Path to be computed
-    int cost = 0;                   // Cost of the path
-    int visited[xncities] = {0};     // Visited nodes
-    if (myrank == 0) {              // Root process initializes the path, by selecting a random node to start with
+    int path[ncities];                  // Path to be computed
+    int cost = 0;                       // Cost of the path
+    int visited[xncities] = {0};        // Visited nodes
+    if (myrank == 0) {                  // Root process initializes the path, by selecting a random node to start with
         std::random_device rd;
         std::mt19937 gen(rd());
         std::uniform_int_distribution<> dis(0, ncities - 1);
         path[0] = dis(gen);
-        if (argv[2] != nullptr) {
+        if (argv[2] != nullptr) {       // If a starting node is specified, select a random node instead
             path[0] = std::stoi(argv[2]);
         }
-        visited[path[0]] = 1;
+        visited[path[0]] = 1;           // And mark it as visited
         printf("PROCESS %d: Selected starting node: %d\n", myrank, path[0]);
     }
 
@@ -72,16 +72,22 @@ int main(int argc, char *argv[]) {
             }
         }
         // TODO: WORK/OPTIMISATION IN PROGRESS:
+        // If the amount of paths to be computed is divisible by the amount of processes, or if it's not, but the current
+        // path is not the last one to be computed, then share the results with the other processes:
         if ((totalAmountOfPaths%npes) == 0 && i<(totalAmountOfPaths/npes)-1
         || (totalAmountOfPaths%npes) != 0 && i<(totalAmountOfPaths/npes)) {
             // Compute the search and share results with the other processes after each path is fully computed:
             std::tuple<double, double> temp = bnb.searchMPI(path, amountOfNodesPerPath, cost, visited, myrank, npes, start);
+            // Update the communication and idling times:
             commTimes = {std::get<0>(commTimes) + std::get<0>(temp), std::get<1>(commTimes) + std::get<1>(temp)};
-        } else {
+        }
+        // However, if the current path is the last one to be computed, then don't share results with the other processes:
+        else {
             // Compute the search, but since it's the last path to be computed, don't share results with the other processes:
             bnb.search(path, amountOfNodesPerPath, cost, visited);
         }
         // TODO: END OF WORK IN PROGRESS.
+        // Reset the visited nodes for the next path:
         for (int j = 0; j < amountOfNodesPerPath; j++) {
             visited[paths[i][j]] = 0;
         }
@@ -91,7 +97,9 @@ int main(int argc, char *argv[]) {
     // Now that every process is out of the loop, the final sharing of results can occur:
     int bestCostAndRank[2] = {bnb.getBestRouteCost(), myrank};
     in = MPI_Wtime() - start;
+    // Gather one last time the best cost, and the rank of the process that found it:
     MPI_Allreduce(MPI_IN_PLACE, bestCostAndRank, 1, MPI_2INT, MPI_MINLOC, MPI_COMM_WORLD);
+    // Broadcast the best route to all processes, using the rank of the process that found it:
     MPI_Bcast(bnb.getBestRoute(), ncities, MPI_INT, bestCostAndRank[1], MPI_COMM_WORLD);
     out = MPI_Wtime() - start;
     bnb.setBestRouteCost(bestCostAndRank[0]);
